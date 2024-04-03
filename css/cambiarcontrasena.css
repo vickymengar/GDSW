@@ -10,6 +10,10 @@ h2 {
   font-family: "Lora";
 }
 
+p {
+    color:#ffffff;
+    font-family: 'Nunito Sans';
+}
 label {
   display: block;
   margin-bottom: 5px;
@@ -30,10 +34,9 @@ label {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  background-color: #1b1d21;
-  border-color: #1b1d21;
-  border: #1b1d21;
-  color: #ffffff; /* Color de texto blanco */
+  background-color: #2A2B2C;
+  border-color: #2A2B2C;
+  border: #2A2B2C;
 }
 
 /* Estilo del área del botón */
@@ -84,11 +87,22 @@ label {
   height: 100vh;
 }
 
+.formulario-caja {
+    background-color:#1b1d21;
+    border:#1b1d21;
+    border-color:#1b1d21;
+    border-radius:20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 /* CSS */
 .formulario-control:focus {
   outline: none;
   box-shadow: none;
-  background-color: #1b1d21;
+  background-color:#2A2B2C;
   color:#CCCCCC;
 }
 
@@ -107,3 +121,10 @@ label {
   color: #CCCCCC;
 }
 
+#volver-login {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9999; /* Asegura que esté encima de otros elementos */
+    color:#192655; /* Cambia el color del botón según tu diseño */
+}

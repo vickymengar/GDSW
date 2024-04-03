@@ -4,19 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sistema Integral AIVI</title>
-    <link rel="icon" type="image/png" href="../img/Logo.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
+    <link rel="icon" type="image/png" href="../img/isoazul.png">
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Style -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row">  
             <div class="col-md-6 fondo-imagen" style="background-image: url('../img/loginfondo1.jpeg');"></div>
             <div class="col-md-6 formulario-columna">
                 <div class="formulario-container">
@@ -24,15 +23,20 @@
                     <h2 class="text-center mb-4">Sistema Integral AIVI</h2>
                     <form action="#" method="post">
                         <div class="grupo-formulario mb-3">
-                            <label for="correo"><strong>Correo Electrónico</strong></label>
-                            <input type="text" class="formulario-control" placeholder="Tu correo electrónico" id="correo">
+                            <label for="usuario"><strong>Usuario</strong></label>
+                            <input type="text" class="formulario-control" placeholder="Usuario" id="usuario" required>
                         </div>
                         <div class="grupo-formulario mb-3">
                             <label for="contrasena"><strong>Contraseña</strong></label>
-                            <input type="password" class="formulario-control" placeholder="Tu Contraseña" id="contrasena">
+                            <div class="input-group">
+                                <input type="password" class="form-control formulario-control" placeholder="Contraseña" id="contrasena" required>
+                                <button class="btn btn-outline-secondary" type="button" id="mostrar-ocultar-contrasena">
+                                    <i class="bi bi-eye" id="icono-ojo"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="grupo-formulario mb-3">
-                            <a href="#" class="olvidar-contrasena">¿Olvidaste tu contraseña?</a>
+                            <a href="./CambiarContrasena.php" class="olvidar-contrasena">¿Olvidaste tu contraseña?</a>
                         </div>
                         <input type="submit" value="Iniciar Sesión" class="boton-inicio-sesion">
                     </form>
@@ -40,7 +44,11 @@
             </div>
         </div>
     </div>
+    <!-- Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS -->
+    <script src="../js/login.js"></script>
 </body>
 </html>
