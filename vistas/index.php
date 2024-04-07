@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/isoblanco.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../img/isoblanco.png">
     <title>SI Aivi</title>
     
 </head>
 <body>
     <div class="head">
         <div class="Logo">
-            <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
+            <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
             <a href="#">Inicio</a>
@@ -43,7 +43,7 @@
         
         <div class="box-container3">
             <div class="box">
-                <img src="img/escudo.png" alt="">
+                <img src="../img/escudo.png" alt="">
                 <h3>UATX</h3>
                 <p> Institución reconocida por su excelencia académica
                     y su compromiso con la formación integral de sus estudiantes.
@@ -51,7 +51,7 @@
             </div>
 
             <div class="box">
-                <img src="img/lic.jpg" alt="">
+                <img src="../img/lic.jpg" alt="">
                 <h3>Lic. Naturopatia</h3>
                 <p> Programa académico reconocido por formar profesionales
                     eficaces en el campo de la medicina natural y holistica.
@@ -59,7 +59,7 @@
             </div>
 
             <div class="box">
-                <img src="img/centro.jpg" alt="">
+                <img src="../img/centro.jpg" alt="">
                 <h3>Cen. Biomagnetismo</h3>
                 <p>Enfoque medico basado en 
                    el uso de imanes para equilibrar la energía del cuerpo.
@@ -79,7 +79,7 @@
         </p>
         <div class="box-container2">
             <div class="box">
-                <img src="img/escudo.png" alt="">
+                <img src="../img/escudo.png" alt="">
                 <h3>Dr. Víctor Cervantes Gracia</h3>
                 <p>Cedu. Prof.13645506</p>
                 <div class="stars">
@@ -93,7 +93,7 @@
 
 
             <div class="box">
-                <img src="img/escudo.png" alt="">
+                <img src="../img/escudo.png" alt="">
                 <h3>Dr. Martha Aida Hernández Larios</h3>
                 <p>Cedu. Prof.1732424</p>
                 <div class="stars">
@@ -109,11 +109,11 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
-    <script src="prueba.js"></script>
+    <script src="../prueba.js"></script>
 
 </body>
 <footer class="footer">
-    <img src="/img/logoblanco.png" alt="" class="logof">
+    <img src="../img/logoblanco.png" alt="" class="logof">
     <div class="social-icons-container">
         <a href="" class="social-icon"></a>
         <a href="" class="social-icon"></a>
