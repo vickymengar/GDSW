@@ -10,7 +10,7 @@
     <!-- FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/Login/login.css">
 </head>
 
 <body>
@@ -23,13 +23,17 @@
                     <h2 class="text-center mb-4">Sistema Integral AIVI</h2>
                     <form action="#" method="post">
                         <div class="grupo-formulario mb-3">
+                            <?php
+                            include "../modelos/BD/conexion.php";
+                            include "../controlador/controlador_login.php";
+                            ?>
                             <label for="usuario"><strong>Usuario</strong></label>
-                            <input type="text" class="formulario-control" placeholder="Usuario" id="usuario" required>
+                            <input type="text" class="formulario-control" placeholder="Usuario" id="usuario" name="usuario">
                         </div>
                         <div class="grupo-formulario mb-3">
                             <label for="contrasena"><strong>Contraseña</strong></label>
                             <div class="input-group">
-                                <input type="password" class="form-control formulario-control" placeholder="Contraseña" id="contrasena" required>
+                                <input type="password" name="password" class="form-control formulario-control" placeholder="Contraseña" id="contrasena">
                                 <button class="btn btn-outline-secondary" type="button" id="mostrar-ocultar-contrasena">
                                     <i class="bi bi-eye" id="icono-ojo"></i>
                                 </button>
@@ -38,7 +42,7 @@
                         <div class="grupo-formulario mb-3">
                             <a href="./CambiarContrasena.php" class="olvidar-contrasena">¿Olvidaste tu contraseña?</a>
                         </div>
-                        <input type="submit" value="Iniciar Sesión" class="boton-inicio-sesion">
+                        <input type="submit" value="Iniciar Sesión" class="boton-inicio-sesion" name="btningresar">
                     </form>
                 </div>
             </div>
@@ -49,6 +53,6 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JS -->
-    <script src="../js/login.js"></script>
+    <script src="../js/Login/login.js"></script>
 </body>
 </html>
