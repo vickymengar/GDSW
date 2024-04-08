@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../img/isoblanco.png">
-    <title>SI Aivi</title>
+    <title>AIVI</title>
     
 </head>
 <body>
@@ -17,9 +17,10 @@
             <a href="#">Inicio</a>
             <a href="#">Pacientes</a>
             <a href="#">Citas</a>
-            <a href="receta.html">Recetas</a>
+            <a href="./receta.php">Recetas</a>
             <a href="#">Tratamientos</a>
             <a href="#">Historiales</a>
+            <a href="#">Cerrar sesión</a>
         </nav>
     </div>
 

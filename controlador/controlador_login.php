@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btningresar"])) {
             $_SESSION["loggedin"] = true;
 
             // Redirigir al usuario a la página de inicio
-            header("Location: index.html");
+            header("Location: index.php");
             exit();
         } else {
             // No se encontró ningún usuario con las credenciales proporcionadas

@@ -14,17 +14,18 @@
             <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="index.html">Inicio</a>
+            <a href="./index.php">Inicio</a>
             <a href="#">Pacientes</a>
             <a href="#">Citas</a>
-            <a href="receta.html">Recetas</a>
+            <a href="./receta.php">Recetas</a>
             <a href="#">Tratamientos</a>
             <a href="#">Historiales</a>
+            <a href="#">Cerrar sesión</a>
         </nav>
     </div>
 
     <div class="container">
-        <header>Aivi</header>
+        <header>AIVI</header>
 
         <form action="#">
             <div class="form first">
