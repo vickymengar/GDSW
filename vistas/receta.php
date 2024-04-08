@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style2.css">
-    <link rel="icon" href="../img/isoblanco.png">
+    <link rel="stylesheet" href="../css/historial.css">
+    <link rel="icon" href="../img/isoazul.png">
     <title>Recetas</title>
     
 </head>
@@ -15,18 +15,35 @@
         </div>
         <nav class="navbar">
             <a href="./index.php">Inicio</a>
-            <a href="#">Pacientes</a>
-            <a href="#">Citas</a>
+            <a href="./pacientes.php">Pacientes</a>
+            <a href="./citas.php">Citas</a>
             <a href="./receta.php">Recetas</a>
-            <a href="#">Tratamientos</a>
-            <a href="#">Historiales</a>
+            <!--<a href="./historial.php">Historiales</a>-->
             <a href="#">Cerrar sesión</a>
         </nav>
     </div>
 
-    <div class="container">
-        <header>AIVI</header>
+    <div class="box-container2" id="box-container">
+        <div class="box" onclick="mostrarContenido(1)">
+            <img src="../img/isoblanco.png" alt="">
+            <h3>Recetas</h3>
+        </div>
 
+        <div class="box" onclick="mostrarContenido(2)">
+            <img src="../img/isoblanco.png" alt="">
+            <h3>Crear receta</h3>
+        </div>
+    </div>
+
+    <div class="contenido" id="contenido-1">
+        <div class="container">
+            <div id="tabla-container"></div>
+        </div>
+    </div>
+
+    <div class="contenido" id="contenido-2">
+        <div class="container">
+        <header>AIVI</header>
         <form action="#">
             <div class="form first">
                 <div class="details personal">
@@ -104,7 +121,9 @@
                 Guardar Receta
             </a>
         </form>
+        </div>
     </div>
+    <script src="../js/historial.js"></script>
 </body>
 <footer class="footer">
     <img src="..//img/logoblanco.png" alt="" class="logof">

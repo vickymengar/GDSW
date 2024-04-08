@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" href="../img/isoblanco.png">
+    <link rel="icon" href="../img/isoazul.png">
     <title>AIVI</title>
     
 </head>
@@ -14,12 +14,11 @@
             <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="#">Inicio</a>
-            <a href="#">Pacientes</a>
-            <a href="#">Citas</a>
+            <a href="./index.php">Inicio</a>
+            <a href="./pacientes.php">Pacientes</a>
+            <a href="./citas.php">Citas</a>
             <a href="./receta.php">Recetas</a>
-            <a href="#">Tratamientos</a>
-            <a href="#">Historiales</a>
+            <!--<a href="./historial.php">Historiales</a>-->
             <a href="#">Cerrar sesión</a>
         </nav>
     </div>
@@ -29,7 +28,6 @@
         <p>¡El Tratamiento Es Un Estilo De Vida Saludable!</p>
         <a href="#" class="btn">Visualizar Citas</a>
         <div class="custom-scroll-down-arrow"><a href="#"><i class="fas fa-chevron-down" style="color: #192655; font-size: 24px;"></i></a></div>
-
     </header>
     
     <section class="content sau" id="nos-respaldan">
