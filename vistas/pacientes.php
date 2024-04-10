@@ -37,6 +37,7 @@
 
     <div class="contenido" id="contenido-1">
         <div class="container">
+            <input type="text" id="searchInput" placeholder="Buscar...">
             <div id="tabla-container"></div>
         </div>
     </div>

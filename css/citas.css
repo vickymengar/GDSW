@@ -408,42 +408,19 @@ table button:hover {
     z-index: 100;
 }
 
-/* Estilos para el formulario de múltiples fases */
-#form-fases {
-    margin-top: 20px;
-}
-
-.fase {
-    display: none;
-}
-
-/* Estilos para los botones de navegación entre fases */
-.fase button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    border: none;
-    background-color: #4caf50;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-.fase button:hover {
-    background-color: #45a049;
-}
-
-/* Estilos para la barra de progreso */
-.progress-container {
+/* Estilos para la barra de búsqueda */
+#searchInput {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    padding: 10px;
     margin-bottom: 20px;
-    height: 20px;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background-color: #4caf50;
-}
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Para incluir padding y border en el ancho total */
+  }
+  
+  #searchInput:focus {
+    outline: none; /* Quita el borde al enfocar el campo de búsqueda */
+    border-color: #007bff; /* Cambia el color del borde al enfocar */
+  }
+  

@@ -103,3 +103,24 @@ function submitForm() {
     // Aquí puedes agregar lógica para enviar el formulario
     alert("Formulario enviado correctamente.");
 }
+
+// Filtrar tabla al escribir en el campo de búsqueda
+document.getElementById('searchInput').addEventListener('input', function() {
+    var searchText = this.value.toLowerCase();
+    var rows = document.querySelectorAll('#tabla-container tr');
+    rows.forEach(function(row) {
+        var cells = row.querySelectorAll('td');
+        var found = false;
+        cells.forEach(function(cell) {
+            var text = cell.textContent.toLowerCase();
+            if (text.indexOf(searchText) !== -1) {
+                found = true;
+            }
+        });
+        if (found) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
