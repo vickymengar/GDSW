@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style5.css">
     <link rel="icon" href="../img/isoazul.png">
-    <title>Citas</title>
+    <title>Pacientes</title>
 </head>
 <body>
     <div class="head">
@@ -22,8 +22,8 @@
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Citas.php">Citas</a></li>
-            <li><a href="./Registrocitas.php">Registro</a></li>
+            <li><a href="./Pacientes1.php">Pacientes</a></li>
+            <li><a href="./Registro.php">Registro</a></li>
         </ul>
     </div>
 
@@ -33,13 +33,13 @@
             <!-- Encabezado de la tabla -->
             <thead>
                 <tr>
-                    <th>ID Cita</th>
-                    <th>Nombre Del Paciente</th>
-                    <th>Nombre Del Medico</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Motivo</th>
-                    <th>Estado</th> <!-- Nueva columna para botones de acciones -->
+                    <th>ID Paciente</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Edad</th>
+                    <th>ID Médico</th>
+                    <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla -->
@@ -49,7 +49,7 @@
         </table>
     </div>
 
-    <script src="../js/citas.js"></script>
+    <script src="../js/pacientes.js"></script>
 </body>
 <footer class="footer">
     <img src="/img/logoblanco.png" alt="" class="logof">

@@ -132,7 +132,7 @@ body {
 
 form .fields .input-field {
     display: flex;
-    width: calc(100% / 3 - 15px);
+    width: calc(100% / 4 - 15px);
     flex-direction: column;
     margin: 4px 0;
 }
@@ -261,6 +261,7 @@ form .fields .input-field {
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    
 }
 
 .social-icon {
@@ -290,4 +291,35 @@ form .fields .input-field {
 
 .copyright {
     color: #ffffff;
+}
+
+.details.personal .fields .input-field {
+    width: calc(100% / 3 - 20px);
+    margin-right: 20px; 
+}
+
+.details.personal .fields .input-field:last-child {
+    margin-right: 0; 
+}
+
+
+.input-field select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #939292;
+    border: 1px solid #2f3030;
+    border-radius: 3px;
+    padding: 0 9px;
+    height: 42px;
+    margin: 8px 0;
+    background-color: #2f3030;
+    appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z" /><path d="M0 0h24v24H0z" fill="none" /></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posición de la flecha */
+}
+
+.input-field select:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
 }

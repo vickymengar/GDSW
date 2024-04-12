@@ -6,11 +6,13 @@
 
 }
 body {
+    margin-top: 103px;
     text-align: left;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     margin: 0; /* Aseguramos que no haya margen exterior en el cuerpo */
     background-color: #0a0a0a;
+    
 }
 
 .head {
@@ -23,6 +25,39 @@ body {
     width: 100%;
     z-index: 100;
     top: 0; /* Fijamos la barra de navegación en la parte superior */
+}
+
+.bar2 {
+    background-color: #111319; /* Cambiamos el color de fondo a azul */
+    display: flex;
+    justify-content: center;
+    position:sticky; /* Fijamos la barra de navegación secundaria */
+    width: 100%; /* Hacemos que la barra ocupe el 100% del ancho */
+    z-index: 99; /* Aseguramos que la barra secundaria esté por debajo de la barra principal */
+    top: 63px; /* Ajustamos la posición para que no se superponga con la barra principal */
+}
+
+.bar2 ul {
+    display: flex;
+    list-style: none;
+}
+
+.bar2 li {
+    margin: 0 10px; /* Ajustamos los márgenes entre elementos */
+}
+
+.bar2 a {
+    display: block;
+    padding: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12.5px;
+}
+
+.bar2 a:hover {
+    background: #192655; /* Cambiamos el color de fondo al hacer hover */
+    border-radius: 2px;
 }
 
 .navbar {
@@ -89,7 +124,7 @@ body {
 .container form {
     position: relative;
     margin-top: 16px;
-    min-height: 600px;
+    min-height: 60px;/*tamaño container*/
     background-color: #111319;
 }
 
@@ -199,7 +234,7 @@ form .fields .input-field {
     margin: 11px 0;
     padding: 10px 40px;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: #192655;
     text-decoration: none;
     color: #ffffff;
@@ -251,7 +286,7 @@ form .fields .input-field {
 
 .logof {
     height: 80px;
-    margin-top: 5px; /* Ajustamos el margen superior del logo */
+    margin-top: 5px; 
 }
 
 
@@ -261,6 +296,7 @@ form .fields .input-field {
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1rem;
+    
 }
 
 .social-icon {
@@ -291,144 +327,3 @@ form .fields .input-field {
 .copyright {
     color: #ffffff;
 }
-
-.about { /* inicio box container 2*/ 
-    background: #0a0a0a;
-    padding-top: 100px;
-    padding: 120px 0;
-}
-
-.box-container2 {
-    display: flex;
-    justify-content: center;
-    padding-top: 150px;
-    flex-wrap: wrap;
-}
-
-.box-container2 .box {
-    width: 250px;
-    padding-bottom: 25px;
-    text-align: center;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 3);
-    background: #111319;
-    margin: 20px 20px;
-    border-radius: 5px;
-    margin-bottom: 25px;
-}
-
-.box-container2 .box:hover {
-    background-color: #192655; /* Cambia el color de fondo al hacer hover */
-    color: #192655; /* Cambia el color del texto al hacer hover */
-    cursor: pointer;
-}
-
-
-.box-container2 .box img {
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-top: -30px;
-    border: 6px solid #ffffff;
-}
-
-.box-container2 .box h3 {
-    font-size: 20px;
-    color: #ffffff;
-    padding-top: 10px;
-    text-align: center;
-    padding: 0 20px; /* Ajusta el padding horizontal según sea necesario */
-}
-
-.box-container2 .box p {
-    font-size: 15px;
-    color: #ffffff;
-    padding: 0;
-    margin-top: 17px;
-    text-align:center;
-    font-family:'Lato', sans-serif;
-}
-
-.box-container2 .box .stars {
-    font-size: 15px;
-    color: #ffffff;
-} /* fin box container 2*/
-
-/* Estilos para la tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #dddddd;
-    margin-top: 20px;
-    background-color:#111319;
-}
-
-th, td {
-    border: 1px solid #f2f2f2;
-    padding: 8px;
-    text-align: left;
-}
-
-td {
-    color:white;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-/* Estilos para los botones de la tabla */
-table button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #192655;
-    color: white;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-table button:hover {
-    background-color: #192655;
-}
-
-
-.footer {
-    width: 100%;
-    padding: 2rem 8%;
-    background-color: #111111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    bottom: 0; /* Fijamos el footer en la parte inferior */
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
-
-/* Estilos para el formulario de múltiples fases */
-#form-fases {
-    margin-top: 20px;
-}
-
-.fase {
-    display: none;
-}
-
-/* Estilos para la barra de búsqueda */
-#searchInput {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box; /* Para incluir padding y border en el ancho total */
-  }
-  
-  #searchInput:focus {
-    outline: none; /* Quita el borde al enfocar el campo de búsqueda */
-    border-color: #007bff; /* Cambia el color del borde al enfocar */
-  }

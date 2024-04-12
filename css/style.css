@@ -63,7 +63,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url(../img/fondo4.jpg) no-repeat center;
+    background: url(img/fondo4.jpg) no-repeat center;
     background-size: cover;
     /* Añadir posición relativa */
     position: relative;
@@ -100,13 +100,14 @@ body {
 
 
 p {
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     margin-top: 5px;
     font-size: 18px;
     color: #ffffff;
     text-align: center;
     padding: 0 350px;
     font-family:'Roboto', sans-serif;
+    
 }
 
 .btn {
@@ -132,11 +133,12 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+    
+    
 }
 
 .sau {
-    padding-top: 100px;
     padding: 120px 0;
     background: #0a0a0a;
 }
@@ -192,8 +194,7 @@ p {
 
 .about { /* inicio box container 2*/ 
     background: #0a0a0a;
-    padding-top: 100px;
-    padding: 120px 0;
+    padding: 50px 0;
 }
 
 .box-container2 {
@@ -205,7 +206,7 @@ p {
 
 .box-container2 .box {
     width: 250px;
-    padding-bottom: 25px;
+    padding-bottom: 50px;
     text-align: center;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 3);
     background: #111319;
@@ -325,6 +326,7 @@ p {
 .copyright{
     color: #ffffff;
 }
+
 
 
 

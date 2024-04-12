@@ -14,11 +14,10 @@
             <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="./index.php">Inicio</a>
-            <a href="./pacientes.php">Pacientes</a>
-            <a href="./citas.php">Citas</a>
-            <a href="./receta.php">Recetas</a>
-            <!--<a href="./historial.php">Historiales</a>-->
+            <a href="./Index.php">Inicio</a>
+            <a href="./Pacientes1.php">Pacientes</a>
+            <a href="./Citas.php">Citas</a>
+            <a href="./Receta.php">Recetas</a>
             <a href="#">Cerrar sesión</a>
         </nav>
     </div>
@@ -108,7 +107,7 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
-    <script src="../prueba.js"></script>
+    <script src="../js/prueba.js"></script>
 
 </body>
 <footer class="footer">
