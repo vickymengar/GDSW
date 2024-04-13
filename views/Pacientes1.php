@@ -1,16 +1,21 @@
+<?php
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style5.css">
-    <link rel="icon" href="../img/isoazul.png">
+    <link rel="stylesheet" href="css/style5.css">
+    <link rel="icon" href="img/isoazul.png">
     <title>Pacientes</title>
 </head>
 <body>
     <div class="head">
         <div class="Logo">
-            <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
+            <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
             <a href="./Index.php">Inicio</a>
@@ -22,7 +27,7 @@
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Pacientes1.php">Pacientes</a></li>
+            <li><a href="./Pacientes1.php"><?php echo $data["titulo"]?></a></li>
             <li><a href="./Registro.php">Registro</a></li>
         </ul>
     </div>
@@ -45,14 +50,27 @@
             <!-- Cuerpo de la tabla -->
             <tbody id="tbody-pacientes">
                 <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+                <?php
+                    foreach ($data['pacientes'] as $dato) {
+                        echo "<tr>";
+                        echo "<td>" . $dato['ID_Paciente'] . "</td>";
+                        echo "<td>" . $dato['Nombre'] . "</td>";
+                        echo "<td>" . $dato['ApellidoPaterno'] . "</td>";
+                        echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
+                        echo "<td>" . $dato['Edad'] . "</td>";
+                        echo "<td>" . $dato['ID_Medico'] . "</td>";
+                        echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
+                        echo "</tr>";
+                    }
+                ?>
             </tbody>
         </table>
     </div>
 
-    <script src="../js/pacientes.js"></script>
+    <script src="js/pacientes.js"></script>
 </body>
 <footer class="footer">
-    <img src="/img/logoblanco.png" alt="" class="logof">
+    <img src="img/logoblanco.png" alt="" class="logof">
     <div class="social-icons-container">
         <a href="" class="social-icon"></a>
         <a href="" class="social-icon"></a>

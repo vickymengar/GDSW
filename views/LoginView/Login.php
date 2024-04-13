@@ -10,22 +10,24 @@
     <!-- FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/Login/login.css">
+    <link rel="stylesheet" href="css/Login/login.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">  
-            <div class="col-md-6 fondo-imagen" style="background-image: url('../img/loginfondo1.jpeg');"></div>
+            <div class="col-md-6 fondo-imagen" style="background-image: url('img/loginfondo1.jpeg');"></div>
             <div class="col-md-6 formulario-columna">
                 <div class="formulario-container">
-                    <img src="../img/logoblanco.png" class="imagen-logo" width="50px">
+                    <img src="img/logoblanco.png" class="imagen-logo" width="50px">
                     <h2 class="text-center mb-4">Sistema Integral AIVI</h2>
                     <form action="#" method="post">
                         <div class="grupo-formulario mb-3">
                             <?php
-                            include "../modelos/BD/conexion.php";
-                            include "../controlador/controlador_login.php";
+                            // Mostrar mensaje de error si existe
+                            if (isset($error)) {
+                                echo "<p>Error: $error</p>";
+                            }
                             ?>
                             <label for="usuario"><strong>Usuario</strong></label>
                             <input type="text" class="formulario-control" placeholder="Usuario" id="usuario" name="usuario">
@@ -33,7 +35,7 @@
                         <div class="grupo-formulario mb-3">
                             <label for="contrasena"><strong>Contraseña</strong></label>
                             <div class="input-group">
-                                <input type="password" name="password" class="form-control formulario-control" placeholder="Contraseña" id="contrasena">
+                                <input type="password" name="contrasena" class="form-control formulario-control" placeholder="Contraseña" id="contrasena">
                                 <button class="btn btn-outline-secondary" type="button" id="mostrar-ocultar-contrasena">
                                     <i class="bi bi-eye" id="icono-ojo"></i>
                                 </button>
@@ -53,6 +55,6 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JS -->
-    <script src="../js/Login/login.js"></script>
+    <script src="js/Login/login.js"></script>
 </body>
 </html>

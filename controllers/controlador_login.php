@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btningresar"])) {
     // Verificar si los campos de usuario y contraseña no están vacíos
     if (!empty($_POST["usuario"]) && !empty($_POST["password"])) {
         // Incluir el archivo de conexión a la base de datos
-        include "../modelos/BD/conexion.php";
+        include "../config/Database.php";
 
         // Limpiar los datos del usuario y la contraseña para prevenir la inyección de SQL
         $usuario = htmlspecialchars($_POST["usuario"]);
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btningresar"])) {
             $_SESSION["loggedin"] = true;
 
             // Redirigir al usuario a la página de inicio
-            header("Location: index.php");
+            header("Location: panel.php");
             exit();
         } else {
             // No se encontró ningún usuario con las credenciales proporcionadas
