@@ -30,7 +30,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="./Index.php">Inicio</a>
+            <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="./Citas.php">Citas</a>
             <a href="./Receta.php">Recetas</a>

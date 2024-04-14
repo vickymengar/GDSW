@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style5.css">
-    <link rel="icon" href="../img/isoazul.png">
+    <link rel="stylesheet" href="css/style5.css">
+    <link rel="icon" href="img/isoazul.png">
     <title>Citas</title>
 </head>
 <body>
     <div class="head">
         <div class="Logo">
-            <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
+            <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
             <a href="./Index.php">Inicio</a>
@@ -49,10 +49,10 @@
         </table>
     </div>
 
-    <script src="../js/citas.js"></script>
+    <script src="js/citas.js"></script>
 </body>
 <footer class="footer">
-    <img src="/img/logoblanco.png" alt="" class="logof">
+    <img src="img/logoblanco.png" alt="" class="logof">
     <div class="social-icons-container">
         <a href="" class="social-icon"></a>
         <a href="" class="social-icon"></a>

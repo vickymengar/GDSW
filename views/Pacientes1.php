@@ -1,4 +1,15 @@
 <?php
+// Iniciar sesión (si aún no está iniciada)
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["ID_Usuario"])) {
+    // Si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+    $login_url = 'index.php?c=Login&a=index';
+    // Redirigir al usuario al panel principal
+    header("Location: $login_url");
+    exit;
+}
 
 ?>
 
@@ -18,16 +29,16 @@
             <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="./Index.php">Inicio</a>
-            <a href="./Pacientes1.php">Pacientes</a>
+            <a href="index.php?c=Panel&a=index">Inicio</a>
+            <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="./Citas.php">Citas</a>
             <a href="./Receta.php">Recetas</a>
-            <a href="#">Cerrar sesión</a>
+            <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Pacientes1.php"><?php echo $data["titulo"]?></a></li>
+            <li><a href=".index.php?c=Pacientes&a=index">Pacientes</a></li>
             <li><a href="./Registro.php">Registro</a></li>
         </ul>
     </div>
@@ -43,7 +54,7 @@
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
                     <th>Edad</th>
-                    <th>ID Médico</th>
+                    <th>Medico Asignado</th>
                     <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
                 </tr>
             </thead>
@@ -51,17 +62,17 @@
             <tbody id="tbody-pacientes">
                 <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
                 <?php
-                    foreach ($data['pacientes'] as $dato) {
-                        echo "<tr>";
-                        echo "<td>" . $dato['ID_Paciente'] . "</td>";
-                        echo "<td>" . $dato['Nombre'] . "</td>";
-                        echo "<td>" . $dato['ApellidoPaterno'] . "</td>";
-                        echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
-                        echo "<td>" . $dato['Edad'] . "</td>";
-                        echo "<td>" . $dato['ID_Medico'] . "</td>";
-                        echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
-                        echo "</tr>";
-                    }
+                foreach ($data['pacientes'] as $dato) {
+                    echo "<tr>";
+                    echo "<td>" . $dato['ID_Paciente'] . "</td>";
+                    echo "<td>" . $dato['Nombre'] . "</td>";
+                    echo "<td>" . $dato['ApellidoPaterno'] . "</td>";
+                    echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
+                    echo "<td>" . $dato['Edad'] . "</td>";
+                    echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
+                    echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
+                    echo "</tr>";
+                }
                 ?>
             </tbody>
         </table>

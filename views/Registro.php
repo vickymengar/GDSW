@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style4.css">
-    <link rel="icon" href="../img/isoazul.png">
+    <link rel="stylesheet" href="css/style4.css">
+    <link rel="icon" href="img/isoazul.png">
     <title>Recetas</title>
     
 </head>
 <body>
     <div class="head">
         <div class="Logo">
-            <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
+            <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="./Index.php">Inicio</a>
-            <a href="./Pacientes1.php">Pacientes</a>
+            <a href="index.php?c=Panel&a=index">Inicio</a>
+            <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="./Citas.php">Citas</a>
             <a href="./Receta.php">Recetas</a>
-            <a href="#">Cerrar sesión</a>
+            <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Pacientes1.php">Pacientes</a></li>
+            <li><a href=".index.php?c=Pacientes&a=index">Pacientes</a></li>
             <li><a href="./Registro.php">Registro</a></li>
         </ul>
     </div>
@@ -76,10 +76,10 @@
         </form>
     </div>
 
-    <script src="../js/pacientes.js"></script>
+    <script src="js/pacientes.js"></script>
 </body>
 <footer class="footer">
-    <img src="/img/logoblanco.png" alt="" class="logof">
+    <img src="img/logoblanco.png" alt="" class="logof">
     <div class="social-icons-container">
         <a href="" class="social-icon"></a>
         <a href="" class="social-icon"></a>
