@@ -24,30 +24,10 @@ pacientes.forEach(function(paciente, index) {
 
 // Función para eliminar un paciente
 function eliminarPaciente(index) {
-    // Remover el paciente del array
-    pacientes.splice(index, 1);
-
-    // Actualizar el almacenamiento local
-    localStorage.setItem('pacientes', JSON.stringify(pacientes));
-
-    // Actualizar la tabla
-    actualizarTabla();
-}
-
-// Función para editar un paciente
-function editarPaciente(index) {
-    var pacienteEditado = prompt("Ingrese los nuevos datos del paciente separados por coma (ID Paciente, Nombre, Apellido Paterno, Apellido Materno, Edad, ID Médico):");
-    var datosPaciente = pacienteEditado.split(",");
-
-    if (datosPaciente.length === 6) {
-        pacientes[index] = {
-            idPaciente: datosPaciente[0].trim(),
-            nombre: datosPaciente[1].trim(),
-            apellidoPaterno: datosPaciente[2].trim(),
-            apellidoMaterno: datosPaciente[3].trim(),
-            edad: datosPaciente[4].trim(),
-            idMedico: datosPaciente[5].trim()
-        };
+    var confirmacion = confirm("¿Estás seguro de que deseas eliminar este paciente?");
+    if (confirmacion) {
+        // Remover el paciente del array
+        pacientes.splice(index, 1);
 
         // Actualizar el almacenamiento local
         localStorage.setItem('pacientes', JSON.stringify(pacientes));
@@ -55,8 +35,14 @@ function editarPaciente(index) {
         // Actualizar la tabla
         actualizarTabla();
     } else {
-        alert("Ingrese los datos correctamente.");
+        // No hacer nada si el usuario cancela la eliminación
     }
+}
+
+// Función para editar un paciente
+function editarPaciente(index) {
+   // Redirigir a la página de detalles del paciente
+   window.location.href = 'Pacientes_detalles.php';
 }
 
 // Función para actualizar la tabla

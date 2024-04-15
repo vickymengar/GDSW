@@ -327,3 +327,25 @@ form .fields .input-field {
 .copyright {
     color: #ffffff;
 }
+
+.input-field select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #d2d2d2;
+    border: 1px solid #2f3030;
+    border-radius: 3px;
+    padding: 0 9px;
+    height: 42px;
+    width: 264.984px;
+    margin: 8px 0;
+    background-color: #2f3030;
+    -webkit-appearance: none; /* Quita los estilos predeterminados del navegador */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.input-field select:focus,
+.input-field select:valid {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}

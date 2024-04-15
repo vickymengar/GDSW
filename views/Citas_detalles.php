@@ -74,9 +74,8 @@
                             <textarea id="motivo" placeholder="Ingrese el motivo" rows="5" required></textarea>
                         </div>
                         
-                        <button type="button" class="boton efecto3" onclick="registrarPaciente()">
-                            Registrar cita
-                        </button>
+                        <button type="button" class="boton efecto3" onclick="actualizarDatos()">Actualizar</button>
+                        <button type="button" class="boton efecto3" onclick="cancelar()">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -84,6 +83,7 @@
     </div>
 
     <script src="../js/citas.js"></script>
+    <script src="../js/citas_detalles.js"></script>
 </body>
 <footer class="footer">
     <img src="/img/logoblanco.png" alt="" class="logof">

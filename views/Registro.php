@@ -37,10 +37,6 @@
                     <span class="title">Datos Del Paciente</span>
 
                     <div class="fields">
-                        <div class="input-field">
-                            <label>ID Paciente</label>
-                            <input id="idPaciente" type="text" placeholder="Ingrese el ID del Paciente" required>
-                        </div>
 
                         <div class="input-field">
                             <label>Nombre</label>
@@ -63,8 +59,11 @@
                         </div>
 
                         <div class="input-field">
-                            <label>ID Médico</label>
-                            <input id="idMedico" type="number" placeholder="Ingrese el ID del Médico" required>
+                            <label for="Medico">Médico a cargo</label>
+                            <select id="Medico" name="Medico" class="input-field" required>
+                                <option value="" disabled selected>Selecciona un médico</option>
+                                    <!-- Opcion desde la base de datos -->
+                            </select>
                         </div>
 
                         <button type="button" class="boton efecto3" onclick="registrarPaciente()">

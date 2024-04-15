@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="head">
-        <div class="Logo">
-            <a href="#"><img src="../img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
+    <div class="Logo">
+            <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
             <a href="./Index.php">Inicio</a>
@@ -19,6 +19,13 @@
             <a href="./Receta.php">Recetas</a>
             <a href="#">Cerrar sesión</a>
         </nav>
+    </div>
+    <div class="bar2">
+        <ul>
+            <li><a href="./Receta.php">Citas</a></li>
+            <li><a href="./Registroreceta.php">Registro</a></li>
+        </ul>
+    </div>
     </div>
 
     <div class="container">
@@ -127,11 +134,13 @@
                 </div>
             </div>
 
-            <button type="submit" class="boton efecto3">
+            <button type="submit" class="boton efecto3" onclick="registrarPaciente()">
                 Guardar Receta
             </button>
         </form>
     </div>
+
+    <script src="../js/recetas.js"></script>
 
     <footer class="footer">
         <img src="/img/logoblanco.png" alt="" class="logof">

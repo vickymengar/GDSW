@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style5.css">
     <link rel="icon" href="img/isoazul.png">
-    <title>Citas</title>
+    <title>Recetas</title>
 </head>
 <body>
     <div class="head">
@@ -22,8 +22,8 @@
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Citas.php">Citas</a></li>
-            <li><a href="./Registrocitas.php">Registro</a></li>
+            <li><a href="./Receta.php">Citas</a></li>
+            <li><a href="./Registroreceta.php">Registro</a></li>
         </ul>
     </div>
 
@@ -33,12 +33,22 @@
             <!-- Encabezado de la tabla -->
             <thead>
                 <tr>
-                    <th>Nombre Del Paciente</th>
-                    <th>Nombre Del Medico</th>
-                    <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Motivo</th>
-                    <th>Estado</th> <!-- Nueva columna para botones de acciones -->
+                    <th>ID Receta</th>
+                    <th>ID Médico</th>
+                    <th>ID Paciente</th>
+                    <th>Fecha de Creación</th>
+                    <th>Nombre del Paciente</th>
+                    <th>Apellido Paterno del Paciente</th>
+                    <th>Apellido Materno del Paciente</th>
+                    <th>Edad</th>
+                    <th>Peso</th>
+                    <th>Temperatura</th>
+                    <th>Talla</th>
+                    <th>Tensión Arterial</th>
+                    <th>SO2</th>
+                    <th>Diagnóstico</th>
+                    <th>Receta</th>
+                    <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla -->
@@ -46,6 +56,7 @@
                 <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
             </tbody>
         </table>
+
     </div>
 
     <script src="js/citas.js"></script>
