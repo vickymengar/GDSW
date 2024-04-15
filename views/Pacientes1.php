@@ -38,8 +38,8 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
     <div class="bar2">
         <ul>
-            <li><a href=".index.php?c=Pacientes&a=index">Pacientes</a></li>
-            <li><a href="./Registro.php">Registro</a></li>
+            <li><a href="index.php?c=Pacientes&a=index">Pacientes</a></li>
+            <li><a href="index.php?c=RegistroP&a=index">Registro</a></li>
         </ul>
     </div>
 

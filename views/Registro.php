@@ -1,3 +1,18 @@
+<?php
+// Iniciar sesión (si aún no está iniciada)
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["ID_Usuario"])) {
+    // Si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+    $login_url = 'index.php?c=Login&a=index';
+    // Redirigir al usuario al panel principal
+    header("Location: $login_url");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,58 +38,51 @@
     </div>
     <div class="bar2">
         <ul>
-            <li><a href=".index.php?c=Pacientes&a=index">Pacientes</a></li>
-            <li><a href="./Registro.php">Registro</a></li>
+            <li><a href="index.php?c=Pacientes&a=index">Pacientes</a></li>
+            <li><a href="index.php?c=RegistroP&a=index">Registro</a></li>
         </ul>
     </div>
 
     <div class="container">
         <header>Aivi</header>
-
-        <form id="registroForm">
+                <form id="registroForm" action="index.php?c=RegistroP&a=registrarP" method="POST">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Datos Del Paciente</span>
-
                     <div class="fields">
-
                         <div class="input-field">
                             <label>Nombre</label>
-                            <input id="nombre" type="text" placeholder="Ingrese el Nombre del Paciente" required>
+                            <input id="nombre" name="nombre" type="text" placeholder="Ingrese el Nombre del Paciente" required>
                         </div>
-
                         <div class="input-field">
                             <label>Apellido Paterno</label>
-                            <input id="apellidoPaterno" type="text" placeholder="Ingrese el Apellido Paterno" required>
+                            <input id="apellidoPaterno" name="apellidoPaterno" type="text" placeholder="Ingrese el Apellido Paterno" required>
                         </div>
-
                         <div class="input-field">
                             <label>Apellido Materno</label>
-                            <input id="apellidoMaterno" type="text" placeholder="Ingrese el Apellido Materno" required>
+                            <input id="apellidoMaterno" name="apellidoMaterno" type="text" placeholder="Ingrese el Apellido Materno" required>
                         </div>
-
                         <div class="input-field">
                             <label>Edad</label>
-                            <input id="edad" type="text" placeholder="Ingrese la Edad" required>
+                            <input id="edad" name="edad" type="text" placeholder="Ingrese la Edad" required>
                         </div>
-
                         <div class="input-field">
                             <label for="Medico">Médico a cargo</label>
                             <select id="Medico" name="Medico" class="input-field" required>
                                 <option value="" disabled selected>Selecciona un médico</option>
-                                    <!-- Opcion desde la base de datos -->
+                                <?php foreach ($medicos as $medico): ?>
+                                    <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
-
-                        <button type="button" class="boton efecto3" onclick="registrarPaciente()">
+                        <button type="submit" class="boton efecto3" name="registrarPaciente">
                             Registrar Paciente
                         </button>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-
+    </div>                    
     <script src="js/pacientes.js"></script>
 </body>
 <footer class="footer">

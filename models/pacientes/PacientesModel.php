@@ -4,6 +4,7 @@ class Pacientes_model {
 
     private $db;
     private $pacientes;
+    private $medicos;
 
     public function __construct() {
         $this->db = Conectar::conexion();
@@ -21,7 +22,30 @@ class Pacientes_model {
         return $this->pacientes;
     }
     
+    public function get_medicos(){
+        $sql = "SELECT *, CONCAT(Nombre, ' ', ApellidoPaterno, ' ', ApellidoMaterno) AS NombreCompletoMedico FROM Medico";
+        $resultado = $this->db->query($sql);
+        $medicos = array();
+        while($row = $resultado->fetch_assoc()){
+            $medicos[] = $row;
+        }
+        return $medicos;
+    }
+    
     
 
+    public function registrar_paciente($nombre, $apellidoPaterno, $apellidoMaterno, $edad, $idMedico){
+        // Preparar la consulta SQL
+        $sql = "INSERT INTO Paciente (Nombre, ApellidoPaterno, ApellidoMaterno, Edad, ID_Medico) 
+                VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', $edad, $idMedico)";
+        
+        // Ejecutar la consulta
+        if ($this->db->query($sql) === TRUE) {
+            return true; // Registro exitoso
+        } else {
+            return false; // Error al registrar
+        }
+
+    }
 
 }
