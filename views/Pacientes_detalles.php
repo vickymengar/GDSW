@@ -1,3 +1,21 @@
+<?php
+// Iniciar sesión (si aún no está iniciada)
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["ID_Usuario"])) {
+    // Si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+    $login_url = 'index.php?c=Login&a=index';
+    // Redirigir al usuario al panel principal
+    header("Location: $login_url");
+    exit;
+}
+
+// Verificar si se han pasado los detalles del paciente
+if (isset($data['detallePaciente'])) {
+    $detallePaciente = $data['detallePaciente'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style4.css">
     <link rel="icon" href="img/isoazul.png">
-    <title>Recetas</title>
+    <title>Detalles del Paciente</title>
     
 </head>
 <body>
@@ -16,22 +34,16 @@
         <nav class="navbar">
             <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
-            <a href="./Receta.php">Recetas</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
+            <a href="index.php?c=Receta&a=index">Recetas</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
-    </div>
-    <div class="bar2">
-        <ul>
-            <li><a href=".index.php?c=Pacientes&a=index">Pacientes</a></li>
-            <li><a href="./Registro.php">Registro</a></li>
-        </ul>
     </div>
 
     <div class="container">
         <header>Aivi</header>
 
-        <form id="registroForm">
+        <form id="registroForm" action="index.php?c=DetallesP&a=actualizarPaciente" method="post">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Datos Del Paciente</span>
@@ -39,34 +51,40 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Nombre</label>
-                            <input id="nombre" type="text" placeholder="Ingrese el Nombre del Paciente" required>
+                            <input id="nombre" name="nombre" type="text" value="<?php echo $detallePaciente['Nombre']; ?>" required>
                         </div>
-
+                        
                         <div class="input-field">
                             <label>Apellido Paterno</label>
-                            <input id="apellidoPaterno" type="text" placeholder="Ingrese el Apellido Paterno" required>
+                            <input id="apellidoPaterno" name="apellidoPaterno"type="text" value="<?php echo $detallePaciente['ApellidoPaterno']; ?>" required>
                         </div>
 
                         <div class="input-field">
                             <label>Apellido Materno</label>
-                            <input id="apellidoMaterno" type="text" placeholder="Ingrese el Apellido Materno" required>
+                            <input id="apellidoMaterno" name="apellidoMaterno" type="text" value="<?php echo $detallePaciente['ApellidoMaterno']; ?>" required>
                         </div>
 
                         <div class="input-field">
                             <label>Edad</label>
-                            <input id="edad" type="text" placeholder="Ingrese la Edad" required>
+                            <input id="edad" name="edad" type="text" value="<?php echo $detallePaciente['Edad']; ?>" required>
                         </div>
 
                         <div class="input-field">
                             <label for="Medico">Médico a cargo</label>
-                            <select id="Medico" name="Medico" class="input-field" required>
+                            <select id="Medico" name="medico" class="input-field" required>
                                 <option value="" disabled selected>Selecciona un médico</option>
-                                    <!-- Opcion desde la base de datos -->
+                                <?php foreach ($medicos['medicos'] as $medico): ?>
+                                <?php if ($medico['ID_Medico'] == $data['medicoACargo']['ID_Medico']): ?>
+                                    <option value="<?php echo $medico['ID_Medico']; ?>" selected><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                <?php else: ?>
+                                    <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                             </select>
                         </div>
-
-                        <button type="button" class="boton efecto3" onclick="actualizarDatos()">Actualizar</button>
-                        <button type="button" class="boton efecto3" onclick="cancelar()">Cancelar</button>
+                        <input type="hidden" name="id_Paciente" value="<?php echo $detallePaciente['ID_Paciente']; ?>">
+                        <button type="submit" class="boton efecto3">Actualizar</button>
+                        <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Pacientes&a=index'">Cancelar</button>
                     </div>
                 </div>
             </div>
@@ -74,7 +92,7 @@
     </div>
 
     <script src="../js/pacientes.js"></script>
-    <script src="../js/pacientes_detalles.js"><script>
+    <script src="../js/pacientes_detalles.js"></script>
 </body>
 <footer class="footer">
     <img src="img/logoblanco.png" alt="" class="logof">
@@ -93,3 +111,10 @@
     <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
 </footer>
 </html>
+
+<?php
+} else {
+    // Si no se proporcionaron los detalles del paciente, muestra un mensaje de error
+    echo "No se encontraron detalles del paciente.";
+}
+?>

@@ -33,7 +33,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="index.php?c=Citas&a=index">Citas</a>
-            <a href="./Receta.php">Recetas</a>
+            <a href="index.php?c=Receta&a=index">Recetas</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -41,7 +41,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <header class="content header">
         <h2 class="title3">Mejora Tu Salud Con Aivi</h2>
         <p>¡El Tratamiento Es Un Estilo De Vida Saludable!</p>
-        <a href="./citas.php" class="btn">Visualizar Citas</a>
+        <a href="index.php?c=Citas&a=index" class="btn">Visualizar Citas</a>
         <div class="custom-scroll-down-arrow"><a href="#"><i class="fas fa-chevron-down" style="color: #192655; font-size: 24px;"></i></a></div>
     </header>
     

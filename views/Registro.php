@@ -1,3 +1,4 @@
+
 <?php
 // Iniciar sesión (si aún no está iniciada)
 session_start();
@@ -20,7 +21,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style4.css">
     <link rel="icon" href="img/isoazul.png">
-    <title>Recetas</title>
+    <title>Registrar Paciente</title>
     
 </head>
 <body>
@@ -31,8 +32,8 @@ if (!isset($_SESSION["ID_Usuario"])) {
         <nav class="navbar">
             <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
-            <a href="./Receta.php">Recetas</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
+            <a href="index.php?c=Receta&a=index">Recetas</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>

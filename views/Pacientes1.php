@@ -21,18 +21,27 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style5.css">
     <link rel="icon" href="img/isoazul.png">
+    <style>
+        .eliminar-container {
+            display: inline-block;
+            margin-left: 10px; /* Ajusta este valor según sea necesario */
+        }
+    </style>
     <title>Pacientes</title>
 </head>
 <body>
+
+
+
     <div class="head">
         <div class="Logo">
             <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="index.php?c=Panel&a=index">Inicio</a>
+        <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
-            <a href="./Receta.php">Recetas</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
+            <a href="index.php?c=Receta&a=index">Recetas</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -71,8 +80,12 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>" . $dato['Edad'] . "</td>";
                     echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
                     echo "<td>";
-                    echo "<button onclick='editarPaciente(" . $dato['ID_Paciente'] . ")'>Editar</button>";
-                    echo "<button onclick='eliminarPaciente(" . $dato['ID_Paciente'] . ")'>Eliminar</button>";
+                    echo "<button onclick=\"window.location.href='index.php?c=DetallesP&a=index&id=" . $dato['ID_Paciente'] . "'\">Editar</button>";
+                    echo "<div class='eliminar-container'>";
+                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
+                    echo "<input type='hidden' name='id_paciente' value='" . $dato['ID_Paciente'] . "'>";
+                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                    echo "</form>";
                     echo "</td>";
                     echo "</tr>";
                 }

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sistema Integral AIVI</title>
-    <link rel="icon" type="image/png" href="../img/isoazul.png">
+    <link rel="icon" type="image/png" href="img/isoazul.png">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="grupo-formulario mb-3">
-                            <a href="./CambiarContrasena.php" class="olvidar-contrasena">¿Olvidaste tu contraseña?</a>
+                            <a href="index.php?c=CambiarC&a=index" class="olvidar-contrasena">¿Olvidaste tu contraseña?</a>
                         </div>
                         <input type="submit" value="Iniciar Sesión" class="boton-inicio-sesion" name="btningresar">
                     </form>

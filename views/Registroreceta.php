@@ -1,9 +1,24 @@
+<?php
+// Iniciar sesión (si aún no está iniciada)
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["ID_Usuario"])) {
+    // Si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+    $login_url = 'index.php?c=Login&a=index';
+    // Redirigir al usuario al panel principal
+    header("Location: $login_url");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="css/style2.css">
     <link rel="icon" href="img/isoazul.png">
     <title>Recetas</title>
 </head>
@@ -13,17 +28,17 @@
             <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
-            <a href="./Index.php">Inicio</a>
-            <a href="./Pacientes1.php">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
-            <a href="./Receta.php">Recetas</a>
-            <a href="#">Cerrar sesión</a>
+        <a href="index.php?c=Panel&a=index">Inicio</a>
+            <a href="index.php?c=Pacientes&a=index">Pacientes</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
+            <a href="index.php?c=Receta&a=index">Recetas</a>
+            <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Receta.php">Citas</a></li>
-            <li><a href="./Registroreceta.php">Registro</a></li>
+            <li><a href="index.php?c=Receta&a=index">Citas</a></li>
+            <li><a href="index.php?c=RegistroR&a=index">Registro</a></li>
         </ul>
     </div>
     </div>
@@ -140,10 +155,10 @@
         </form>
     </div>
 
-    <script src="../js/recetas.js"></script>
+    <script src="js/recetas.js"></script>
 
     <footer class="footer">
-        <img src="/img/logoblanco.png" alt="" class="logof">
+        <img src="img/logoblanco.png" alt="" class="logof">
         <div class="social-icons-container">
             <a href="" class="social-icon"></a>
             <a href="" class="social-icon"></a>
