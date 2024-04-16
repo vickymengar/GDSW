@@ -45,59 +45,89 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
 
     <div class="container">
-        <header>Aivi</header>
+        <header>AIVI</header>
+        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" method="post">
+    <div class="form first">
+        <div class="details personal">
+            <span class="title">Datos De La Cita</span>
 
-        <form id="registroForm">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Datos Del Paciente</span>
-
-                    <div class="fields">
-
-                        <div class="input-field">
-                            <label>Nombre Paciente</label>
-                            <input id="nombre" type="text" placeholder="Ingrese el Nombre del Paciente" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label for="Medico">Nombre Médico</label>
-                            <select id="Medico" name="Medico" class="input-field" required>
-                                <option value="" disabled selected>Selecciona un médico</option>
-                                    <!-- Opcion desde la base de datos -->
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Fecha</label>
-                            <input id="apellidoMaterno" type="date" placeholder="Ingrese el Apellido Materno" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Hora</label>
-                            <input id="edad" type="text" placeholder="Ingrese la Edad" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label for="Estado">Estado</label>
-                            <select id="Estado" name="Estado" class="input-field" required>
-                                <option value="" disabled selected>Selecciona un estado</option>
-                                    <!-- Opcion desde la base de datos -->
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label for="motivo">Motivo</label>
-                            <textarea id="motivo" placeholder="Ingrese el motivo" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="button" class="boton efecto3" onclick="registrarPaciente()">
-                            Registrar cita
-                        </button>
-                    </div>
+            <div class="fields">
+                <div class="input-field">
+                    <label>ID Paciente</label>
+                    <select id="idPaciente" name="idPaciente"required>
+                        <option value="" disabled selected>Selecciona un paciente</option>
+                        <?php foreach ($data['ids_pacientes'] as $id): ?>
+                        <option value="<?php echo $id; ?>"><?php echo $id; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
+
+                <div class="input-field">
+                    <label>Nombre Paciente</label>
+                    <input id="nombrepaciente" name="nombrePaciente" type="text" placeholder="Nombre del paciente" required readonly>
+                </div>
+
+                <div class="input-field">
+                    <label for="idMedico">Nombre Médico</label>
+                    <select id="idMedico" name="idMedico"required>
+                        <option value="" disabled selected>Selecciona un médico</option>
+                       
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label>Fecha</label>
+                    <input id="fecha" name="fecha" type="date" required>
+                </div>
+
+                <div class="input-field">
+                    <label>Hora</label>
+                    <input id="hora" name="hora" type="time" required>
+                </div>
+
+                <div class="input-field">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" required>
+                        <option value="" disabled selected>Selecciona un estado</option>
+                        <?php foreach ($data['estados_disponibles'] as $estado): ?>
+                        <option value="<?php echo $estado; ?>"><?php echo $estado; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label for="motivo">Motivo</label>
+                    <textarea id="motivo" name="motivo" placeholder="Ingrese el motivo" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="boton efecto3">Registrar cita</button>
             </div>
-        </form>
+        </div>
     </div>
+</form>
+
+
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#idPaciente').change(function() {
+            var idPaciente = $(this).val();
+
+            $.ajax({
+                type: 'GET',
+                url: 'index.php?c=RegistroC&a=obtenerNombrePacientePorId&id=' + idPaciente,
+                success: function(nombrePaciente) {
+                    $('#nombrepaciente').val(nombrePaciente);
+                }
+            });
+        });
+    });
+</script>
+
 
     <script src="js/citas.js"></script>
 </body>

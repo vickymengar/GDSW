@@ -17,6 +17,7 @@ pacientes.forEach(function(paciente, index) {
         <td>
             <button onclick="editarPaciente(${index})">Editar</button>
             <button onclick="eliminarPaciente(${index})">Eliminar</button>
+            <button onclick="exportarPDF(${index})">Exportar PDF</button>
         </td>
     `;
     tbody.appendChild(tr);
@@ -24,7 +25,7 @@ pacientes.forEach(function(paciente, index) {
 
 // Función para eliminar un paciente
 function eliminarPaciente(index) {
-    var confirmacion = confirm("¿Estás seguro de que deseas eliminar este paciente?");
+    var confirmacion = confirm("¿Estás seguro de que deseas eliminar esta cita?");
     if (confirmacion) {
         // Remover el paciente del array
         pacientes.splice(index, 1);
@@ -45,6 +46,31 @@ function editarPaciente(index) {
    window.location.href = 'Citas_detalles.php';
 }
 
+// Función para exportar a PDF
+function exportarPDF(index) {
+    // Crear un nuevo objeto jsPDF
+    var doc = new jsPDF();
+
+    // Obtener los datos del paciente seleccionado
+    var paciente = pacientes[index];
+
+    // Crear el contenido del PDF con los datos del paciente
+    var content = `
+        ID Paciente: ${paciente.idPaciente}
+        Nombre: ${paciente.nombre}
+        Apellido Paterno: ${paciente.apellidoPaterno}
+        Apellido Materno: ${paciente.apellidoMaterno}
+        Edad: ${paciente.edad}
+        ID Médico: ${paciente.idMedico}
+    `;
+
+    // Agregar el contenido al PDF
+    doc.text(content, 10, 10);
+
+    // Descargar el PDF
+    doc.save('paciente_' + paciente.idPaciente + '.pdf');
+}
+
 // Función para actualizar la tabla
 function actualizarTabla() {
     // Limpiar el contenido actual de la tabla
@@ -63,6 +89,7 @@ function actualizarTabla() {
             <td>
                 <button onclick="editarPaciente(${index})">Editar</button>
                 <button onclick="eliminarPaciente(${index})">Eliminar</button>
+                <button onclick="exportarPDF(${index})">Exportar PDF</button>
             </td>
         `;
         tbody.appendChild(tr);

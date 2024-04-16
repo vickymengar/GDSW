@@ -46,40 +46,40 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
     <div class="container">
         <header>Aivi</header>
-                <form id="registroForm" action="index.php?c=RegistroP&a=registrarP" method="POST">
-            <div class="form first">
+        <form id="registroForm" action="index.php?c=RegistroP&a=registrarP" method="POST">
+            <div class="form">
                 <div class="details personal">
                     <span class="title">Datos Del Paciente</span>
                     <div class="fields">
                         <div class="input-field">
-                            <label>Nombre</label>
+                            <label for="nombre">Nombre</label>
                             <input id="nombre" name="nombre" type="text" placeholder="Ingrese el Nombre del Paciente" required>
                         </div>
                         <div class="input-field">
-                            <label>Apellido Paterno</label>
+                            <label for="apellidoPaterno">Apellido Paterno</label>
                             <input id="apellidoPaterno" name="apellidoPaterno" type="text" placeholder="Ingrese el Apellido Paterno" required>
                         </div>
                         <div class="input-field">
-                            <label>Apellido Materno</label>
+                            <label for="apellidoMaterno">Apellido Materno</label>
                             <input id="apellidoMaterno" name="apellidoMaterno" type="text" placeholder="Ingrese el Apellido Materno" required>
                         </div>
                         <div class="input-field">
-                            <label>Edad</label>
+                            <label for="edad">Edad</label>
                             <input id="edad" name="edad" type="text" placeholder="Ingrese la Edad" required>
                         </div>
                         <div class="input-field">
                             <label for="Medico">Médico a cargo</label>
-                            <select id="Medico" name="Medico" class="input-field" required>
+                            <select id="Medico" name="Medico" required>
                                 <option value="" disabled selected>Selecciona un médico</option>
                                 <?php foreach ($medicos as $medico): ?>
                                     <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <button type="submit" class="boton efecto3" name="registrarPaciente">
-                            Registrar Paciente
-                        </button>
                     </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="boton efecto3" name="registrarPaciente">Registrar Paciente</button>
                 </div>
             </div>
         </form>

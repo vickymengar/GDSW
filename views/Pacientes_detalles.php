@@ -71,7 +71,7 @@ if (isset($data['detallePaciente'])) {
 
                         <div class="input-field">
                             <label for="Medico">Médico a cargo</label>
-                            <select id="Medico" name="medico" class="input-field" required>
+                            <select id="Medico" name="medico" required>
                                 <option value="" disabled selected>Selecciona un médico</option>
                                 <?php foreach ($medicos['medicos'] as $medico): ?>
                                 <?php if ($medico['ID_Medico'] == $data['medicoACargo']['ID_Medico']): ?>

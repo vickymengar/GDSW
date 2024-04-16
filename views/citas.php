@@ -20,6 +20,12 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style5.css">
     <link rel="icon" href="img/isoazul.png">
+    <style>
+        .eliminar-container {
+            display: inline-block;
+            margin-left: 10px; /* Ajusta este valor según sea necesario */
+        }
+    </style>
     <title>Citas</title>
 </head>
 <body>
@@ -70,7 +76,13 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>" . $cita['Hora'] . "</td>";
                     echo "<td>" . $cita['Motivo'] . "</td>";
                     echo "<td>" . $cita['Estado'] . "</td>"; // Mostrar el nombre completo del médico
-                    echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
+                    echo "<td>";
+                    echo "<button onclick=\"window.location.href='index.php?c=DetallesC&a=index&id=" . $cita['ID_Cita'] . "'\">Editar</button>";
+                    echo "<div class='eliminar-container'>";
+                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
+                    echo "<input type='hidden' name='id_paciente' value='" . $cita['ID_Cita'] . "'>";
+                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>
