@@ -15,15 +15,15 @@
         <nav class="navbar">
             <a href="./Index.php">Inicio</a>
             <a href="./Pacientes1.php">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="./Receta.php">Recetas</a>
             <a href="#">Cerrar sesión</a>
         </nav>
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="./Citas.php">Citas</a></li>
-            <li><a href="./Registrocitas.php">Registro</a></li>
+            <li><a href="index.php?c=Citas&a=index">Citas</a></li>
+            <li><a href="index.php?c=RegistroC&a=index">Registro</a></li>
         </ul>
     </div>
 
@@ -33,17 +33,32 @@
             <!-- Encabezado de la tabla -->
             <thead>
                 <tr>
+                    <th>ID Cita</th>
                     <th>Nombre Del Paciente</th>
                     <th>Nombre Del Medico</th>
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Motivo</th>
                     <th>Estado</th> <!-- Nueva columna para botones de acciones -->
+                    <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
                 </tr>
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody id="tbody-pacientes">
-                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+            <?php
+                foreach ($citas['citas'] as $cita) {
+                    echo "<tr>";
+                    echo "<td>" . $cita['ID_Cita'] . "</td>";
+                    echo "<td>" . $cita['NombreCompletoPaciente'] . "</td>";
+                    echo "<td>" . $cita['NombreCompletoMedico'] . "</td>";
+                    echo "<td>" . $cita['Fecha'] . "</td>";
+                    echo "<td>" . $cita['Hora'] . "</td>";
+                    echo "<td>" . $cita['Motivo'] . "</td>";
+                    echo "<td>" . $cita['Estado'] . "</td>"; // Mostrar el nombre completo del médico
+                    echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
     </div>

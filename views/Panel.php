@@ -32,7 +32,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
         <nav class="navbar">
             <a href="index.php?c=Panel&a=index">Inicio</a>
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
-            <a href="./Citas.php">Citas</a>
+            <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="./Receta.php">Recetas</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
