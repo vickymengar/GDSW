@@ -49,12 +49,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <thead>
                 <tr>
                     <th>ID Receta</th>
-                    <th>ID Médico</th>
                     <th>ID Paciente</th>
-                    <th>Fecha de Creación</th>
                     <th>Nombre del Paciente</th>
-                    <th>Apellido Paterno del Paciente</th>
-                    <th>Apellido Materno del Paciente</th>
+                    <th>Nombre del Doctor</th>
+                    <th>Fecha de Creación</th>
                     <th>Edad</th>
                     <th>Peso</th>
                     <th>Temperatura</th>
@@ -68,7 +66,26 @@ if (!isset($_SESSION["ID_Usuario"])) {
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody id="tbody-pacientes">
-                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+            <?php
+                foreach ($data['recetas'] as $dato) {
+                    echo "<tr>";
+                    echo "<td>" . $dato['ID_Receta'] . "</td>";
+                    echo "<td>" . $dato['ID_Paciente'] . "</td>";
+                    echo "<td>" . $dato['NombreCompletoPaciente'] . "</td>";
+                    echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
+                    echo "<td>" . $dato['FechaCreacion'] . "</td>";
+                    echo "<td>" . $dato['Edad'] . "</td>";
+                    echo "<td>" . $dato['Peso'] . "</td>";
+                    echo "<td>" . $dato['Temperatura'] . "</td>";
+                    echo "<td>" . $dato['Talla'] . "</td>";
+                    echo "<td>" . $dato['TensionArterial'] . "</td>";
+                    echo "<td>" . $dato['SO2'] . "</td>";
+                    echo "<td>" . $dato['Dx'] . "</td>";
+                    echo "<td>" . $dato['Receta'] . "</td>";
+                    echo "<td>";
+                    echo "</tr>";
+                }
+                ?>
             </tbody>
         </table>
 
