@@ -42,7 +42,7 @@ function eliminarPaciente(index) {
 // Función para editar un paciente
 function editarPaciente(index) {
    // Redirigir a la página de detalles del paciente
-   window.location.href = 'Pacientes_detalles.php';
+   window.location.href = '../views/Pacientes1.php';
 }
 
 // Función para actualizar la tabla

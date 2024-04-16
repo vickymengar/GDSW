@@ -70,7 +70,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
                     echo "<td>" . $dato['Edad'] . "</td>";
                     echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
-                    echo "<td>Acciones</td>"; // Aquí podrías agregar los botones de acciones si los necesitas
+                    echo "<td>";
+                    echo "<button onclick='editarPaciente(" . $dato['ID_Paciente'] . ")'>Editar</button>";
+                    echo "<button onclick='eliminarPaciente(" . $dato['ID_Paciente'] . ")'>Eliminar</button>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>
