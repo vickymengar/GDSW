@@ -23,6 +23,15 @@ class Receta_model {
         return $recetas; // Devolver el arreglo de recetas
     }
     
+    public function get_medicos(){
+        $sql = "SELECT *, CONCAT(Nombre, ' ', ApellidoPaterno, ' ', ApellidoMaterno) AS NombreCompletoMedico FROM Medico";
+        $resultado = $this->db->query($sql);
+        $medicos = array();
+        while($row = $resultado->fetch_assoc()){
+            $medicos[] = $row;
+        }
+        return $medicos;
+    }
     
 
     // Otros métodos que puedas necesitar, como insertar, actualizar, eliminar, etc.

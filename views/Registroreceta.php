@@ -55,10 +55,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
                         <div class="input-field">
                             <label for="nombreMedico">Nombre Del Médico</label>
                             <select id="nombreMedico" required>
-                                <option value="">Seleccione un Médico</option>
-                                <option></option>
-                                <option></option>
-                               
+                                <option value="" disabled selected>Selecciona un médico</option>
+                                <?php foreach ($medicos as $medico): ?>
+                                    <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
 
