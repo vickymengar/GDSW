@@ -21,6 +21,27 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <link rel="stylesheet" href="css/style5.css">
     <link rel="icon" href="img/isoazul.png">
     <title>Recetas</title>
+    <style>
+        .eliminar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Espacio entre los botones */
+        }
+        /* Estilos para la tabla */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .styled-table th,
+        .styled-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <div class="head">
@@ -83,6 +104,14 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>" . $dato['Dx'] . "</td>";
                     echo "<td>" . $dato['Receta'] . "</td>";
                     echo "<td>";
+                    echo "<div class='eliminar-container'>";
+                    echo "<button onclick=\"window.location.href='index.php?c=DetallesP&a=index&id=" . $dato['ID_Paciente'] . "'\">Editar</button>";
+                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
+                    echo "<input type='hidden' name='id_paciente' value='" . $dato['ID_Paciente'] . "'>";
+                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                    echo "</form>";
+                    echo "</div>";
+                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>
