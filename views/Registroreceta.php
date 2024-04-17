@@ -37,7 +37,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="index.php?c=Receta&a=index">Citas</a></li>
+            <li><a href="index.php?c=Receta&a=index">Recetas</a></li>
             <li><a href="index.php?c=RegistroR&a=index">Registro</a></li>
         </ul>
     </div>
@@ -46,114 +46,125 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <div class="container">
         <header>AIVI</header>
 
-        <form action="#">
-            <div class="form first">
-                <div class="details personal">
-                    <span class="title">Datos Del Médico</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="nombreMedico">Nombre Del Médico</label>
-                            <select id="nombreMedico" required>
-                                <option value="" disabled selected>Selecciona un médico</option>
-                                <?php foreach ($medicos as $medico): ?>
-                                    <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label for="cedulaProfesional">Cedula Profesional</label>
-                            <select id="cedulaProfesional" required>
-                                <option value="">Cédula Profesional</option>
-                                <option></option>
-                                <option></option>
-                                <!-- Agrega más opciones según necesites -->
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Fecha</label>
-                            <input type="date" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                    </div>
+        <form action="index.php?c=RegistroR&a=registrarR" method="POST">
+    <div class="form first">
+        <div class="details personal">
+            <span class="title">Datos Del Médico</span>
+            <div class="fields">
+                <div class="input-field">
+                    <label for="nombreMedico">Nombre Del Médico</label>
+                    <select id="nombreMedico" name="idMedico" required>
+                        <option value="" disabled selected>Selecciona un médico</option>
+                        <?php foreach ($medicos as $medico): ?>
+                            <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
-
-                <div class="details ID"> <!-- Datos paciente -->
-                    <span class="title">Datos Del Paciente</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label for="nombrePaciente">Nombre Del Paciente</label>
-                            <select id="nombrePaciente" required>
-                                <option value="">Seleccione un Paciente</option>
-                                <option></option>
-                                <option></option>
-                        
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label for="edadPaciente">Edad</label>
-                            <select id="edadPaciente" required>
-                                <option value="">Seleccione la Edad</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <!-- Agrega más opciones según necesites -->
-                            </select>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Peso</label>
-                            <input type="number" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Temperatura</label>
-                            <input type="text" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Talla</label>
-                            <input type="number" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>T/A</label>
-                            <input type="number" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>SO2</label>
-                            <input type="number" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Dx</label>
-                            <input type="number" placeholder="Ingrese Los Datos" required>
-                        </div>
-
-                    </div>
+                <div class="input-field">
+                    <label for="cedulaProfesional">Cédula Profesional</label>
+                    <input id="cedulaProfesional" name="cedulaProfesional" type="text" placeholder="Cédula Profesional" required readonly>
                 </div>
-
-                <div class="details diagnostico-form"> <!-- Datos de diagnóstico -->
-                    <span class="title">Receta Medica</span>
-
-                    <div class="fields">
-                        <div class="input-field">
-                            <label>Receta</label>
-                            <textarea placeholder="Ingrese la receta médica" rows="4" required></textarea>
-                        </div>
-                    </div>
+                <div class="input-field">
+                    <label>Fecha</label>
+                    <input id="fecha" name="fecha" type="date" placeholder="Ingrese Los Datos" required>
                 </div>
             </div>
+        </div>
 
-            <button type="submit" class="boton efecto3" onclick="registrarPaciente()">
-                Guardar Receta
-            </button>
-        </form>
+        <div class="details ID"> <!-- Datos paciente -->
+            <span class="title">Datos Del Paciente</span>
+            <div class="fields">
+                <div class="input-field">
+                    <label for="nombrePaciente">Nombre Del Paciente</label>
+                    <select id="nombrePaciente" name="idPaciente" required>
+                        <option value="">Seleccione un Paciente</option>
+                        <?php foreach ($pacientes as $paciente): ?>
+                            <option value="<?php echo $paciente['ID_Paciente']; ?>"><?php echo $paciente['NombreCompletoPaciente']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="edadPaciente">Edad</label>
+                    <input id="edadPaciente" name="edadPaciente" type="text" placeholder="Edad del Paciente" required readonly>
+                </div>
+                <div class="input-field">
+                    <label>Peso</label>
+                    <input id="peso" name="peso" type="number" placeholder="Ingrese el Peso" required>
+                </div>
+                <div class="input-field">
+                    <label>Temperatura</label>
+                    <input id="temperatura" name="temperatura" type="text" placeholder="Ingrese la Temperatura" required>
+                </div>
+                <div class="input-field">
+                    <label>Talla</label>
+                    <input id="talla" name="talla" type="number" placeholder="Ingrese la Talla" required>
+                </div>
+                <div class="input-field">
+                    <label>T/A</label>
+                    <input id="tensionArterial" name="tensionArterial" type="text" placeholder="Ingrese la Tensión Arterial" required>
+                </div>
+                <div class="input-field">
+                    <label>SO2</label>
+                    <input id="so2" name="so2" type="number" placeholder="Ingrese el SO2" required>
+                </div>
+                <div class="input-field">
+                    <label>Dx</label>
+                    <input id="dx" name="diagnostico" type="text" placeholder="Ingrese el Diagnóstico" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="details diagnostico-form"> <!-- Datos de diagnóstico -->
+            <span class="title">Receta Médica</span>
+            <div class="fields">
+                <div class="input-field">
+                    <label>Receta</label>
+                    <textarea id="receta" name="receta" placeholder="Ingrese la receta médica" rows="4" required></textarea>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <button type="submit" class="boton efecto3">
+        Guardar Receta
+    </button>
+</form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#nombreMedico').change(function() {
+        var idMedico = $(this).val();
+
+        $.ajax({
+            type: 'GET',
+            url: 'index.php?c=RegistroR&a=obtenerCedulaDoctorPorId&id=' + idMedico,
+            success: function(cedulaMedico) {
+                $('#cedulaProfesional').val(cedulaMedico);
+            }
+        });
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#nombrePaciente').change(function() {
+        var idPaciente = $(this).val();
+
+        $.ajax({
+            type: 'GET',
+            url: 'index.php?c=RegistroR&a=obtenerEdadPacientePorId&id=' + idPaciente,
+            success: function(edadPaciente) {
+                $('#edadPaciente').val(edadPaciente);
+            }
+        });
+    });
+});
+</script>
 
     <script src="js/recetas.js"></script>
 

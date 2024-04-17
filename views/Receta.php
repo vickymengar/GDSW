@@ -65,6 +65,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
     <div class="container">
         <!-- Tabla de pacientes existentes -->
+        <div class="table-responsive">
         <table id="tabla-pacientes" class="styled-table">
             <!-- Encabezado de la tabla -->
             <thead>
@@ -105,10 +106,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>" . $dato['Receta'] . "</td>";
                     echo "<td>";
                     echo "<div class='eliminar-container'>";
-                    echo "<button onclick=\"window.location.href='index.php?c=DetallesR&a=index&id=" . $dato['ID_Paciente'] . "'\">Editar</button>";
-                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
-                    echo "<input type='hidden' name='id_paciente' value='" . $dato['ID_Paciente'] . "'>";
-                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                    echo "<button onclick=\"window.location.href='index.php?c=DetallesR&a=index&id=" . $dato['ID_Receta'] . "'\">Editar</button>";
+                    echo "<form action='index.php?c=Receta&a=eliminarReceta' method='post'>";
+                    echo "<input type='hidden' name='id_receta' value='" . $dato['ID_Receta'] . "'>";
+                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar esta receta?')\">Eliminar</button>";
                     echo "</form>";
                     echo "</div>";
                     echo "</td>";
@@ -117,7 +118,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
                 ?>
             </tbody>
         </table>
-
+        </div>
     </div>
 
     <script src="js/citas.js"></script>
