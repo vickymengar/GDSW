@@ -116,6 +116,7 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     justify-content: center;
     align-items: center;
     height: 100vh; /* Ajusta la altura de la sección para centrar verticalmente */
@@ -194,3 +195,23 @@ body {
 .copyright {
     color: #ffffff;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center; /* Align search bar to the right */
+    width: 100%; /* Span the full width */
+    margin-bottom: 20px; /* Añadir un margen inferior */
+  }
+
+  #search-input {
+    border: 1px solid #ccc; /* Add a border to the input */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 5px 10px; /* Add some padding inside the input */
+    font-size: 16px; /* Set the font size */
+    width:75%;
+  }
+
+  #search-input:focus {
+    background-color: #e0e0e0;  /* Set background color for focus state */
+    color:#09090B;
+  }

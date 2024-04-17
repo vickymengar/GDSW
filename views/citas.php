@@ -49,6 +49,9 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
 
     <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Búsqueda">
+        </div>
         <!-- Tabla de pacientes existentes -->
         <table id="tabla-pacientes" class="styled-table">
             <!-- Encabezado de la tabla -->
@@ -92,6 +95,35 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
 
     <script src="js/citas.js"></script>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const tbodyPacientes = document.getElementById('tbody-pacientes');
+                    
+        searchInput.addEventListener('keyup', function() {
+          const searchTerm = this.value.toLowerCase();
+          const rows = tbodyPacientes.getElementsByTagName('tr');
+        
+          for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const cells = row.getElementsByTagName('td');
+        
+            let found = false;
+            for (let j = 0; j < cells.length; j++) { // Check all columns
+              const cellText = cells[j].textContent.toLowerCase();
+              if (cellText.includes(searchTerm)) {
+                found = true;
+                break;
+              }
+            }
+        
+            if (found) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          }
+        });
+    </script>
 </body>
 <footer class="footer">
     <img src="img/logoblanco.png" alt="" class="logof">

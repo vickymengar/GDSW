@@ -53,48 +53,94 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
 
     <div class="container">
-        <!-- Tabla de pacientes existentes -->
-        <table id="tabla-pacientes" class="styled-table">
-            <!-- Encabezado de la tabla -->
-            <thead>
-                <tr>
-                    <th>ID Paciente</th>
-                    <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
-                    <th>Edad</th>
-                    <th>Medico Asignado</th>
-                    <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
-                </tr>
-            </thead>
-            <!-- Cuerpo de la tabla -->
-            <tbody id="tbody-pacientes">
-                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
-                <?php
-                foreach ($data['pacientes'] as $dato) {
-                    echo "<tr>";
-                    echo "<td>" . $dato['ID_Paciente'] . "</td>";
-                    echo "<td>" . $dato['Nombre'] . "</td>";
-                    echo "<td>" . $dato['ApellidoPaterno'] . "</td>";
-                    echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
-                    echo "<td>" . $dato['Edad'] . "</td>";
-                    echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
-                    echo "<td>";
-                    echo "<button onclick=\"window.location.href='index.php?c=DetallesP&a=index&id=" . $dato['ID_Paciente'] . "'\">Editar</button>";
-                    echo "<div class='eliminar-container'>";
-                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
-                    echo "<input type='hidden' name='id_paciente' value='" . $dato['ID_Paciente'] . "'>";
-                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
-                    echo "</form>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Búsqueda">
+        </div>
+
+            <!-- Tabla de pacientes existentes -->
+            <table id="tabla-pacientes" class="styled-table">
+                <!-- Encabezado de la tabla -->
+                <thead>
+                    <tr>
+                        <th>ID Paciente</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Edad</th>
+                        <th>Medico Asignado</th>
+                        <th>Acciones</th> <!-- Nueva columna para botones de acciones -->
+                    </tr>
+                </thead>
+                <!-- Cuerpo de la tabla -->
+                <tbody id="tbody-pacientes">
+                    <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+                    <?php
+                    foreach ($data['pacientes'] as $dato) {
+                        echo "<tr>";
+                        echo "<td>" . $dato['ID_Paciente'] . "</td>";
+                        echo "<td>" . $dato['Nombre'] . "</td>";
+                        echo "<td>" . $dato['ApellidoPaterno'] . "</td>";
+                        echo "<td>" . $dato['ApellidoMaterno'] . "</td>";
+                        echo "<td>" . $dato['Edad'] . "</td>";
+                        echo "<td>" . $dato['NombreCompletoMedico'] . "</td>"; // Mostrar el nombre completo del médico
+                        echo "<td>";
+                        echo "<button onclick=\"window.location.href='index.php?c=DetallesP&a=index&id=" . $dato['ID_Paciente'] . "'\">Editar</button>";
+                        echo "<div class='eliminar-container'>";
+                        echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
+                        echo "<input type='hidden' name='id_paciente' value='" . $dato['ID_Paciente'] . "'>";
+                        echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
     </div>
 
     <script src="js/pacientes.js"></script>
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const tbodyPacientes = document.getElementById('tbody-pacientes');
+                        
+        searchInput.addEventListener('keyup', function() {
+          const searchTerm = this.value.toLowerCase();
+          const rows = tbodyPacientes.getElementsByTagName('tr');
+        
+          for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const cells = row.getElementsByTagName('td');
+        
+            let found = false;
+            for (let j = 1; j < cells.length; j++) { // Start from 1 to skip the ID column
+              const cellText = cells[j].textContent.toLowerCase();
+              if (cellText.includes(searchTerm)) {
+                found = true;
+                break;
+              }
+            }
+        
+            // Check for matches in specific columns
+            if (!found && row.cells[1].textContent.toLowerCase().includes(searchTerm)) { // Name
+              found = true;
+            } else if (!found && row.cells[2].textContent.toLowerCase().includes(searchTerm)) { // Paternal surname
+              found = true;
+            } else if (!found && row.cells[3].textContent.toLowerCase().includes(searchTerm)) { // Maternal surname
+              found = true;
+            } else if (!found && row.cells[4].textContent.toLowerCase().includes(searchTerm)) { // Age
+              found = true;
+            } else if (!found && row.cells[5].textContent.toLowerCase().includes(searchTerm)) { // Doctor's name
+              found = true;
+            }
+        
+            if (found) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          }
+        });
+    </script>
 </body>
 <footer class="footer">
     <img src="img/logoblanco.png" alt="" class="logof">
