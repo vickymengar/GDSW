@@ -23,7 +23,7 @@ class RegistropController {
             $exito = $model->registrar_paciente($nombre, $apellidoPaterno, $apellidoMaterno, $edad, $idMedico);
             if ($exito) {
                 echo 'Paciente registrado con éxito';
-                $panel_url = 'index.php?c=Registrop&a=index';
+                $panel_url = 'index.php?c=Pacientes&a=index';
                 // Redirigir al usuario al panel principal
                 header("Location: $panel_url");
             } else {

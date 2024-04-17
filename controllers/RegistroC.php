@@ -9,10 +9,9 @@ class RegistroCController {
         $citas_model = new Citas_model();
         
         // Obtener los nombres completos de los médicos
-        $nombres_medicos = $citas_model->get_nombres_medicos();
+        $medicos = $citas_model->get_medicos();
         
-        // Pasar los nombres de los médicos a la vista
-        $data['nombres_medicos'] = $nombres_medicos;
+        // Pasar los nombres de los médicos a la vist
 
         // Obtener los estados disponibles
         $estados_disponibles = $citas_model->get_estados_disponibles();

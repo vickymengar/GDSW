@@ -11,7 +11,11 @@ if (!isset($_SESSION["ID_Usuario"])) {
     exit;
 }
 
+// Verificar si se han pasado los detalles del paciente
+if (isset($data['detalleCita'])) {
+    $detalle_cita = $data['detalleCita'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -38,14 +42,15 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </div>
     <div class="bar2">
         <ul>
-            <li><a href="index.php?c=Pacientes&a=index">Pacientes</a></li>
-            <li><a href="index.php?c=RegistroP&a=index">Registro</a></li>
+            <li><a href="index.php?c=Citas&a=index">Citas</a></li>
+            <li><a href="index.php?c=RegistroC&a=index">Registro</a></li>
         </ul>
     </div>
 
     <div class="container">
         <header>Aivi</header>
-        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" method="post">
+        <form id="actualizarForm" action="index.php?c=DetallesC&a=actualizarCita" method="post">
+    <input type="hidden" name="idCita" value="<?php echo $detalle_cita['ID_Cita']; ?>">
     <div class="form first">
         <div class="details personal">
             <span class="title">Datos De La Cita</span>
@@ -53,9 +58,15 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <div class="fields">
                 <div class="input-field">
                     <label>ID Paciente</label>
-                    <select id="idPaciente" name="idPaciente"required>
-                        <option value="" disabled selected>Selecciona un paciente</option>
-                        
+                    <select id="idPaciente" name="idPaciente" required>
+                        <!-- Opciones para los pacientes -->
+                        <?php foreach ($lista_pacientes as $paciente) : ?>
+                            <!-- Verificar si el ID del paciente coincide con el ID asociado a la cita -->
+                            <?php $selected = ($paciente['ID_Paciente'] == $detalle_cita['ID_Paciente']) ? 'selected' : ''; ?>
+                            <option value="<?php echo $paciente['ID_Paciente']; ?>" <?php echo $selected; ?>>
+                                <?php echo $paciente['ID_Paciente']; ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
@@ -66,45 +77,97 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
                 <div class="input-field">
                     <label for="idMedico">Nombre Médico</label>
-                    <select id="idMedico" name="idMedico"required>
+                    <select id="idMedico" name="idMedico" required>
                         <option value="" disabled selected>Selecciona un médico</option>
-                       
+                        <?php foreach ($medicos['medicos'] as $medico): ?>
+                            <?php if ($medico['ID_Medico'] == $detalle_cita['ID_Medico']): ?>
+                                <option value="<?php echo $medico['ID_Medico']; ?>" selected><?php echo $medico['NombreCompletoMedico']; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="input-field">
                     <label>Fecha</label>
-                    <input id="fecha" name="fecha" type="date" required>
+                    <input id="fecha" name="fecha" type="date" value="<?php echo $detalle_cita['Fecha']; ?>" required>
                 </div>
 
                 <div class="input-field">
                     <label>Hora</label>
-                    <input id="hora" name="hora" type="time" required>
+                    <input id="hora" name="hora" type="time" value="<?php echo $detalle_cita['Hora']; ?>" required>
                 </div>
 
                 <div class="input-field">
                     <label for="estado">Estado</label>
                     <select id="estado" name="estado" required>
                         <option value="" disabled selected>Selecciona un estado</option>
-                       
+                        <!-- Mostrar el estado actual preseleccionado -->
+                        <option value="<?php echo $estados_cita['estado_actual']; ?>" selected>
+                            <?php echo $estados_cita['estado_actual']; ?>
+                        </option>
+                        
+                        <!-- Mostrar los demás estados disponibles -->
+                        <?php $estados_predefinidos = array('Programada', 'Confirmada', 'Cancelada', 'Completada'); ?>
+                        <?php foreach ($estados_predefinidos as $estado) : ?>
+                            <!-- Evitar mostrar el estado actual nuevamente -->
+                            <?php if ($estado != $estados_cita['estado_actual']) : ?>
+                                <option value="<?php echo $estado; ?>">
+                                    <?php echo $estado; ?>
+                                </option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div class="input-field">
                     <label for="motivo">Motivo</label>
-                    <textarea id="motivo" name="motivo" placeholder="Ingrese el motivo" rows="5" required></textarea>
+                    <textarea id="motivo" name="motivo" placeholder="Ingrese el motivo" rows="5" required><?php echo $detalle_cita['Motivo']; ?></textarea>
                 </div>
 
-                <button type="button" class="boton efecto3" onclick="actualizarDatos()">Actualizar</button>
-                <button type="button" class="boton efecto3" onclick="cancelar()">Cancelar</button>
+                <button type="submit" class="boton efecto3">Actualizar</button>
+                <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Citas&a=index'">Cancelar</button>
             </div>
         </div>
     </div>
 </form>
+
     </div>
 
     <script src="js/citas.js"></script>
     <script src="js/citas_detalles.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    // Obtener el ID del paciente preseleccionado al cargar la página
+    var idPaciente = $('#idPaciente').val();
+
+    // Llamar a la función para obtener el nombre del paciente al cargar la página
+    obtenerNombrePaciente(idPaciente);
+
+    // Función para obtener el nombre del paciente
+    function obtenerNombrePaciente(id) {
+        $.ajax({
+            type: 'GET',
+            url: 'index.php?c=DetallesC&a=obtenerNombrePacientePorId&id=' + id,
+            success: function(nombrePaciente) {
+                $('#nombrepaciente').val(nombrePaciente);
+            }
+        });
+    }
+
+    // Detectar cambios en el campo de selección de pacientes
+    $('#idPaciente').change(function() {
+        var idPaciente = $(this).val();
+
+        // Llamar a la función para obtener el nombre del paciente cuando cambia la selección
+        obtenerNombrePaciente(idPaciente);
+    });
+});
+
+</script>
 </body>
 <footer class="footer">
     <img src="img/logoblanco.png" alt="" class="logof">
@@ -123,3 +186,9 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
 </footer>
 </html>
+<?php
+} else {
+    // Si no se proporcionaron los detalles del paciente, muestra un mensaje de error
+    echo "No se encontraron detalles del la cita";
+}
+?>

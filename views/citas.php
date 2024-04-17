@@ -79,9 +79,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     echo "<td>";
                     echo "<button onclick=\"window.location.href='index.php?c=DetallesC&a=index&id=" . $cita['ID_Cita'] . "'\">Editar</button>";
                     echo "<div class='eliminar-container'>";
-                    echo "<form action='index.php?c=Pacientes&a=eliminarPaciente' method='post'>";
-                    echo "<input type='hidden' name='id_paciente' value='" . $cita['ID_Cita'] . "'>";
-                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar este paciente?')\">Eliminar</button>";
+                    echo "<form action='index.php?c=Citas&a=eliminarCita' method='post'>";
+                    echo "<input type='hidden' name='id_cita' value='" . $cita['ID_Cita'] . "'>";
+                    echo "<button type='submit' onclick=\"return confirm('¿Estás seguro de que deseas eliminar esta cita?')\">Eliminar</button>";
+                    echo "</form>";
                     echo "</td>";
                     echo "</tr>";
                 }
