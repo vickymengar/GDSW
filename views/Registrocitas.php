@@ -46,7 +46,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
     <div class="container">
         <header>AIVI</header>
-        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" method="post">
+        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" onsubmit="return validarCita()" method="post">
     <div class="form first">
         <div class="details personal">
             <span class="title">Datos De La Cita</span>
@@ -128,6 +128,85 @@ if (!isset($_SESSION["ID_Usuario"])) {
             });
         });
     });
+</script>
+
+<script>
+        // Obtener la fecha actual
+        var today = new Date();
+
+        // Ajustar al huso horario de México (UTC-6)
+        today.setHours(today.getHours() - 6);
+
+        // Formatear la fecha como yyyy-mm-dd (necesario para el campo de fecha)
+        var formattedDate = today.toISOString().slice(0, 10);
+
+        // Establecer la fecha mínima en el campo de fecha de venta
+        document.getElementById("fecha").setAttribute("min", formattedDate);
+</script>
+
+<script>
+    // Obtener la fecha actual
+    var today = new Date();
+    // Ajustar al huso horario de México (UTC-6)
+    today.setHours(today.getHours() - 6);
+
+    // Formatear la fecha como yyyy-mm-dd (necesario para el campo de fecha)
+    var formattedDate = today.toISOString().slice(0, 10);
+
+    // Obtener el campo de fecha y hora
+    var fechaInput = document.getElementById("fecha");
+    var horaInput = document.getElementById("hora");
+
+    // Establecer la fecha mínima en el campo de fecha
+    fechaInput.setAttribute("min", formattedDate);
+
+    // Función para manejar el evento de cambio en el campo de fecha
+    fechaInput.addEventListener("change", function() {
+        // Obtener la fecha seleccionada por el usuario
+        var selectedDate = new Date(this.value);
+        // Comparar con la fecha actual
+        if (selectedDate.toDateString() === today.toDateString()) {
+            // Si la fecha seleccionada es la fecha actual, establecer la hora mínima en la hora actual
+            var currentHour = today.getHours();
+            var currentMinute = today.getMinutes();
+            var currentFormattedTime = ("0" + currentHour).slice(-2) + ":" + ("0" + currentMinute).slice(-2);
+            horaInput.setAttribute("min", currentFormattedTime);
+        } else {
+            // Si la fecha seleccionada es en el futuro, no se establece una hora mínima
+            horaInput.removeAttribute("min");
+        }
+    });
+</script>
+
+
+<script>
+function validarCita() {
+    var idPaciente = document.getElementById("idPaciente").value;
+    var fecha = document.getElementById("fecha").value;
+    var hora = document.getElementById("hora").value;
+    
+    // Realizar una solicitud AJAX al servidor para verificar la existencia de una cita en la misma fecha y hora
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "index.php?c=RegistroC&a=validarCita", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Obtener la respuesta del servidor
+            var respuesta = xhr.responseText;
+            if (respuesta === "existe") {
+                // Mostrar un mensaje de error si ya existe una cita en la misma fecha y hora
+                alert("Ya existe una cita programada para esta fecha y hora.");
+                return false; // Evitar que se envíe el formulario
+            } else {
+                // Permitir el envío del formulario si no existe una cita en la misma fecha y hora
+                return true;
+            }
+        }
+    };
+    // Enviar los datos del formulario al servidor
+    xhr.send("idPaciente=" + idPaciente + "&fecha=" + fecha + "&hora=" + hora);
+    return false; // Evitar que se envíe el formulario automáticamente
+}
 </script>
 
 

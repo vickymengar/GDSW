@@ -175,6 +175,18 @@ class Citas_model {
         return $eliminado;
     }
     
+    public function verificar_existencia_cita($idPaciente, $fecha, $hora) {
+        // Preparar la consulta SQL para verificar la existencia de una cita en la misma fecha y hora
+        $sql = "SELECT COUNT(*) AS num_citas FROM citas WHERE ID_Paciente = ? AND Fecha = ? AND Hora = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("iss", $idPaciente, $fecha, $hora);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $row = $resultado->fetch_assoc();
+    
+        // Devolver verdadero si existe al menos una cita, falso en caso contrario
+        return $row["num_citas"] > 0;
+    }
     
 }
 
