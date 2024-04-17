@@ -49,11 +49,12 @@ if (isset($data['detalleCita'])) {
 
     <div class="container">
         <header>Aivi</header>
-        <form id="actualizarForm" action="index.php?c=DetallesC&a=actualizarCita" method="post">
+        <form id="actualizarForm" action="index.php?c=DetallesC&a=actualizarCita" onsubmit="return validarCita()" method="post">
     <input type="hidden" name="idCita" value="<?php echo $detalle_cita['ID_Cita']; ?>">
     <div class="form first">
         <div class="details personal">
             <span class="title">Datos De La Cita</span>
+
 
             <div class="fields">
                 <div class="input-field">
@@ -138,6 +139,52 @@ if (isset($data['detalleCita'])) {
     <script src="js/citas_detalles.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+function validarCita() {
+    var idPaciente = document.getElementById("idPaciente").value;
+    var fecha = document.getElementById("fecha").value;
+    var hora = document.getElementById("hora").value;
+    console.log()
+    // Realizar una solicitud AJAX al servidor para verificar la existencia de una cita en la misma fecha y hora
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "index.php?c=DetallesC&a=validarCita", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        console.log()
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Obtener la respuesta del servidor
+            var respuesta = xhr.responseText;
+            if (respuesta === "existe") {
+                // Mostrar un mensaje de error si ya existe una cita en la misma fecha y hora
+                alert("Ya existe una cita programada para esta fecha y hora.");
+                return false; // Evitar que se envíe el formulario
+            } else {
+                // Permitir el envío del formulario si no existe una cita en la misma fecha y hora
+                return true;
+            }
+        }
+    };
+    // Enviar los datos del formulario al servidor
+    xhr.send("idPaciente=" + idPaciente + "&fecha=" + fecha + "&hora=" + hora);
+    return false; // Evitar que se envíe el formulario automáticamente
+}
+</script>
+                               
+<script>
+        // Obtener la fecha actual
+        var today = new Date();
+
+        // Ajustar al huso horario de México (UTC-6)
+        today.setHours(today.getHours() - 6);
+
+        // Formatear la fecha como yyyy-mm-dd (necesario para el campo de fecha)
+        var formattedDate = today.toISOString().slice(0, 10);
+
+        // Establecer la fecha mínima en el campo de fecha de venta
+        document.getElementById("fecha").setAttribute("min", formattedDate);
+</script>
+    
     <script>
     $(document).ready(function() {
     // Obtener el ID del paciente preseleccionado al cargar la página
