@@ -46,7 +46,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
     <div class="container">
         <header>AIVI</header>
-        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" onsubmit="return validarCita()" method="post">
+        <form id="registroForm" action="index.php?c=RegistroC&a=registrarC" onsubmit="return validarCita();" method="post">
     <div class="form first">
         <div class="details personal">
             <span class="title">Datos De La Cita</span>
@@ -196,10 +196,12 @@ function validarCita() {
             if (respuesta === "existe") {
                 // Mostrar un mensaje de error si ya existe una cita en la misma fecha y hora
                 alert("Ya existe una cita programada para esta fecha y hora.");
-                return false; // Evitar que se envíe el formulario
+            } else if (respuesta === "no_existe") {
+                // Si no existe una cita en la misma fecha y hora, permitir el envío del formulario
+                document.getElementById("registroForm").submit();
             } else {
-                // Permitir el envío del formulario si no existe una cita en la misma fecha y hora
-                return true;
+                // Hubo un error en la validación de la cita, mostrar un mensaje de error genérico
+                alert("Error al validar la cita.");
             }
         }
     };
@@ -207,6 +209,7 @@ function validarCita() {
     xhr.send("idPaciente=" + idPaciente + "&fecha=" + fecha + "&hora=" + hora);
     return false; // Evitar que se envíe el formulario automáticamente
 }
+
 </script>
 
 

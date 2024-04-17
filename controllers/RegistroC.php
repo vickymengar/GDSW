@@ -82,32 +82,32 @@ class RegistroCController {
     }
 
     public function validarCita() {
-        // Verificar si se han enviado los datos necesarios
-        if (isset($_POST["idPaciente"]) && isset($_POST["fecha"]) && isset($_POST["hora"])) {
-            // Obtener los datos de la solicitud AJAX
-            $idPaciente = $_POST["idPaciente"];
-            $fecha = $_POST["fecha"];
-            $hora = $_POST["hora"];
-    
-            // Instanciar el modelo de citas
-            require_once "models/citas/CitasModel.php";
-            $citas_model = new Citas_model();
-    
-            // Verificar la existencia de una cita en la misma fecha y hora
-            $citaExistente = $citas_model->verificar_existencia_cita($idPaciente, $fecha, $hora);
-    
-            // Devolver la respuesta al cliente
-            if ($citaExistente) {
-                echo "existe";
-            } else {
-                echo "no_existe";
-            }
+    // Verificar si se han enviado los datos necesarios
+    if (isset($_POST["idPaciente"]) && isset($_POST["fecha"]) && isset($_POST["hora"])) {
+        // Obtener los datos de la solicitud AJAX
+        $idPaciente = $_POST["idPaciente"];
+        $fecha = $_POST["fecha"];
+        $hora = $_POST["hora"];
+
+        // Instanciar el modelo de citas
+        require_once "models/citas/CitasModel.php";
+        $citas_model = new Citas_model();
+
+        // Verificar la existencia de una cita en la misma fecha y hora
+        $citaExistente = $citas_model->verificar_existencia_cita($idPaciente, $fecha, $hora);
+
+        // Devolver la respuesta al cliente
+        if ($citaExistente) {
+            echo "existe";
         } else {
-            // Si no se han proporcionado todos los datos necesarios, devolver un mensaje de error
-            echo "error";
+            echo "no_existe";
         }
+    } else {
+        // Si no se han proporcionado todos los datos necesarios, devolver un mensaje de error
+        echo "error";
     }
-    
+}
+
     
     
 }

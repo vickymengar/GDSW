@@ -49,7 +49,7 @@ if (isset($data['detalleCita'])) {
 
     <div class="container">
         <header>Aivi</header>
-        <form id="actualizarForm" action="index.php?c=DetallesC&a=actualizarCita" onsubmit="return validarCita()" method="post">
+        <form id="actualizarForm" action="index.php?c=DetallesC&a=actualizarCita" onsubmit="return validarCita();" method="post">
     <input type="hidden" name="idCita" value="<?php echo $detalle_cita['ID_Cita']; ?>">
     <div class="form first">
         <div class="details personal">
@@ -140,28 +140,30 @@ if (isset($data['detalleCita'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
+    
+<script>
 function validarCita() {
     var idPaciente = document.getElementById("idPaciente").value;
     var fecha = document.getElementById("fecha").value;
     var hora = document.getElementById("hora").value;
-    console.log()
+    
     // Realizar una solicitud AJAX al servidor para verificar la existencia de una cita en la misma fecha y hora
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "index.php?c=DetallesC&a=validarCita", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
-        console.log()
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Obtener la respuesta del servidor
             var respuesta = xhr.responseText;
             if (respuesta === "existe") {
                 // Mostrar un mensaje de error si ya existe una cita en la misma fecha y hora
                 alert("Ya existe una cita programada para esta fecha y hora.");
-                return false; // Evitar que se envíe el formulario
+            } else if (respuesta === "no_existe") {
+                // Si no existe una cita en la misma fecha y hora, permitir el envío del formulario
+                document.getElementById("actualizarForm").submit();
             } else {
-                // Permitir el envío del formulario si no existe una cita en la misma fecha y hora
-                return true;
+                // Hubo un error en la validación de la cita, mostrar un mensaje de error genérico
+                alert("Error al validar la cita.");
             }
         }
     };
@@ -169,7 +171,9 @@ function validarCita() {
     xhr.send("idPaciente=" + idPaciente + "&fecha=" + fecha + "&hora=" + hora);
     return false; // Evitar que se envíe el formulario automáticamente
 }
+
 </script>
+
                                
 <script>
         // Obtener la fecha actual
