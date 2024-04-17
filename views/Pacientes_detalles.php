@@ -83,9 +83,9 @@ if (isset($data['detallePaciente'])) {
                             </select>
                         </div>
                         <input type="hidden" name="id_Paciente" value="<?php echo $detallePaciente['ID_Paciente']; ?>">
-                        <button type="submit" class="boton efecto3">Actualizar</button>
-                        <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Pacientes&a=index'">Cancelar</button>
                     </div>
+                    <button type="submit" class="boton efecto3">Actualizar</button>
+                    <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Pacientes&a=index'">Cancelar</button>
                 </div>
             </div>
         </form>

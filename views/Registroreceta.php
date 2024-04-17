@@ -128,6 +128,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <button type="submit" class="boton efecto3">
         Guardar Receta
     </button>
+    <button type="reset" class="boton efecto3">Limpiar</button>
 </form>
 
     </div>

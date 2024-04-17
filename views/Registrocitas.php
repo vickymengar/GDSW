@@ -101,9 +101,9 @@ if (!isset($_SESSION["ID_Usuario"])) {
                     <label for="motivo">Motivo</label>
                     <textarea id="motivo" name="motivo" placeholder="Ingrese el motivo" rows="5" required></textarea>
                 </div>
-
-                <button type="submit" class="boton efecto3">Registrar cita</button>
             </div>
+            <button type="submit" class="boton efecto3">Registrar cita</button>
+            <button type="reset" class="boton efecto3">Limpiar</button>
         </div>
     </div>
 </form>

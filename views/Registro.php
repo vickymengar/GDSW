@@ -80,6 +80,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
                 </div>
                 <div class="button-container">
                     <button type="submit" class="boton efecto3" name="registrarPaciente">Registrar Paciente</button>
+                    <button type="reset" class="boton efecto3">Limpiar</button>
                 </div>
             </div>
         </form>

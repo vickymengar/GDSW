@@ -125,10 +125,9 @@ if (isset($data['detalleCita'])) {
                     <label for="motivo">Motivo</label>
                     <textarea id="motivo" name="motivo" placeholder="Ingrese el motivo" rows="5" required><?php echo $detalle_cita['Motivo']; ?></textarea>
                 </div>
-
-                <button type="submit" class="boton efecto3">Actualizar</button>
-                <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Citas&a=index'">Cancelar</button>
             </div>
+            <button type="submit" class="boton efecto3">Actualizar</button>
+            <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Citas&a=index'">Cancelar</button>
         </div>
     </div>
 </form>
