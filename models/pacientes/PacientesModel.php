@@ -87,15 +87,29 @@ class Pacientes_model {
     }
     
     public function eliminar_paciente($id_paciente) {
-        // Preparar la consulta SQL para eliminar al paciente por su ID
-        $sql = "DELETE FROM Paciente WHERE ID_Paciente = $id_paciente";
+        // Query SQL para eliminar la receta por su ID
+        $sql = "DELETE FROM paciente WHERE ID_Paciente = ?";
+        
+        // Preparar la consulta
+        $stmt = $this->db->prepare($sql);
+        
+        // Vincular el parámetro ID de receta
+        $stmt->bind_param("i", $id_paciente);
         
         // Ejecutar la consulta
-        if ($this->db->query($sql) === TRUE) {
-            return true; // Eliminación exitosa
+        $eliminado = $stmt->execute();
+        
+        // Verificar si la receta fue eliminada correctamente
+        if($eliminado) {
+            // Devolver verdadero si la eliminación fue exitosa
+            return true;
         } else {
-            return false; // Error al eliminar
+            // Devolver falso si hubo algún error en la eliminación
+            return false;
         }
+        
+        // Cerrar la consulta
+        $stmt->close();
     }
     
 
