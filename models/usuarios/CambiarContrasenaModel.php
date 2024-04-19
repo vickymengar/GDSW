@@ -1,34 +1,34 @@
 <?php
-class CambiarContrasenaModel {
+class CambiarC_model {
     private $db;
-
-    public function __construct($conexion = null) {
+    private $contrasena;
+    public function __construct() {
         // Si se proporciona una conexión, se establece en la propiedad $db
-        if ($conexion !== null) {
-            $this->db = $conexion;
-        }
+        $this->db = Conectar::conexion();
+        
     }
 
     public function getUsuarioByEmail($correo) {
         // Preparar la consulta SQL para buscar el usuario por correo electrónico
-        $sql = "SELECT * FROM usuarios WHERE Correo = ?";
+        $sql = "SELECT * FROM usuarios WHERE CorreoElectronico = ?";
         
         // Preparar la declaración y ejecutar la consulta
         $stmt = $this->db->prepare($sql);
         $stmt->bind_param("s", $correo); // "s" indica que el valor es un string
         $stmt->execute();
-        
-        // Obtener el resultado de la consulta
         $result = $stmt->get_result();
         
-        // Comprobar si se encontró algún usuario
+        // Verificar si se encontró algún usuario
         if ($result->num_rows > 0) {
-            // Devolver los datos del usuario
-            return $result->fetch_assoc();
+            // Obtener los datos del usuario como un array asociativo
+            $usuario = $result->fetch_assoc();
         } else {
-            // Si no se encontró ningún usuario, devolver null
-            return null;
+            $usuario = null;
         }
+        
+        $stmt->close();
+        return $usuario;
     }
+    
 }
 ?>

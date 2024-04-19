@@ -25,7 +25,7 @@
                     <div class="formulario-caja">
                         <h2 class="text-center mb-4">¿Haz olvidado tu contraseña?</h2>
                         <p class="text-center">Ingresa la dirección de correo vinculada a tu cuenta.</p>
-                        <form action="" method="post">
+                        <form action="#" method="post">
                             <div class="grupo-formulario mb-3">
                                 <input type="email" class="formulario-control" placeholder="Tu correo electrónico" id="correo" name="correo" required>
                             </div>
