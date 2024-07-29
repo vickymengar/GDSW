@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 63px;
+    background-color: #09090B;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    margin-right: 10px;
+}
+
+.Logo {
+    margin-left: 30px;
+}
+
+.Logo img {
+    width: 120px; /* Ajusta el ancho según tu preferencia */
+    height: auto; /* Mantiene la proporción */
+}
+
+.Logo a {
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12.5px;
+}
+
+.navbar a {
+    display: block;
+    padding: 20px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12.5px;
+}
+
+.navbar a:hover {
+    background: #192655;
+    border-radius: 2px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url(../img/fondo4.jpg) no-repeat center;
+    background-size: cover;
+    /* Añadir posición relativa */
+    position: relative;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1600px; /* Ancho de la barra */
+    height: 3px; /* Grosor de la barra */
+    background-color: #111111; /* Color de la barra */
+}
+
+/* Estilos del chatbox */
+#chatbox-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#chatbox {
+    flex: 1;
+    border: 1px solid #111319;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #111319;
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+#input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #111319;
+    background-color: #09090B;
+    color: #ffffff;
+    border-top: none;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 0 0 5px 5px;
+}
+
+#input::placeholder {
+    color: #888888;
+}
+
+/* Estilos de los mensajes */
+.user {
+    background-color: #1a1a1a;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-align: right;
+}
+
+.bot {
+    background-color: #2a2a2a;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.footer{
+    width: -100%;
+    position: static;
+    bottom: 0;
+    left: 0;
+    padding: 2rem 8%;
+    background-color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logof{
+    height: 80px;
+    margin-bottom: -10rem; /* Ajustar el margen inferior del logo según sea necesario */
+    margin-top: 0;
+}
+
+.social-icons-container, .footer-menu-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.social-icon{
+    height: 100px;
+    width: 100px;
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+    margin: 1rem;
+}
+
+.footer-menu-container{
+    list-style-type: none;
+    color: #ffffff;
+    font-size: 11;
+}
+
+.menu-item{
+    margin: 10px 20px 10px;
+    cursor: pointer;
+    opacity: 1.0;
+    
+}
+
+.menu-item:hover{
+    opacity: 0.6;
+}
+
+.copyright{
+    color: #ffffff;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .title {
+        margin-bottom: 0px;
+        font-size: 40px;
+    }
+    .sau {
+        height: 100vh;
+        padding: 50px 0;
+    }
+    .about {
+        height: 100vh;
+        padding: 50px 0;
+    }
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+    }
+    .f-enlaces {
+        display: none;
+    }
+    .navbar {
+        display: none;
+    }
+}

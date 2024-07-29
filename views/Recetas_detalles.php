@@ -14,6 +14,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +22,10 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <link rel="icon" href="img/isoazul.png">
     <title>Recetas</title>
 </head>
+
 <body>
     <div class="head">
-    <div class="Logo">
+        <div class="Logo">
             <a href="#"><img src="img/logoblanco.png" alt="Logo de la empresa" class="logo-img"></a>
         </div>
         <nav class="navbar">
@@ -31,6 +33,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="index.php?c=Receta&a=index">Recetas</a>
+            <a href="index.php?c=Chatbot&a=index">ChatBot</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -46,8 +49,8 @@ if (!isset($_SESSION["ID_Usuario"])) {
         <header>AIVI</header>
 
         <form id="actualizarForm" action="index.php?c=DetallesR&a=actualizarReceta" method="post">
-        <input type="hidden" name="idCita" value="<?php echo $detalle_receta['ID_Receta']; ?>">
-             <div class="form first">
+            <input type="hidden" name="idCita" value="<?php echo $detalle_receta['ID_Receta']; ?>">
+            <div class="form first">
                 <div class="details personal">
                     <span class="title">Datos Del Médico</span>
 
@@ -56,14 +59,14 @@ if (!isset($_SESSION["ID_Usuario"])) {
                             <label for="nombreMedico">Nombre Del Médico</label>
                             <select id="nombreMedico" name="nombreMedico" required>
                                 <option value="">Seleccione un Médico</option>
-                                <?php foreach ($medicos['medicos'] as $medico): ?>
-                                <?php if ($medico['ID_Medico'] == $detalle_receta['ID_Medico']): ?>
-                                    <option value="<?php echo $medico['ID_Medico']; ?>" selected><?php echo $medico['NombreCompletoMedico']; ?></option>
-                                <?php else: ?>
-                                    <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
-                                <?php endif; ?>
+                                <?php foreach ($medicos['medicos'] as $medico) : ?>
+                                    <?php if ($medico['ID_Medico'] == $detalle_receta['ID_Medico']) : ?>
+                                        <option value="<?php echo $medico['ID_Medico']; ?>" selected><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                    <?php else : ?>
+                                        <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
-                                
+
                             </select>
                         </div>
 
@@ -88,15 +91,15 @@ if (!isset($_SESSION["ID_Usuario"])) {
                             <label for="nombrePaciente">Nombre Del Paciente</label>
                             <select id="nombrePaciente" name="nombrePaciente" required>
                                 <option value="">Seleccione un Paciente</option>
-                                
+
                                 <!-- Opciones para los pacientes -->
                                 <?php foreach ($lista_pacientes as $paciente) : ?>
                                     <?php $selected = ($paciente['ID_Paciente'] == $detalle_receta['ID_Paciente']) ? 'selected' : ''; ?>
                                     <option value="<?php echo $paciente['ID_Paciente']; ?>" <?php echo $selected; ?>>
                                         <?php echo $paciente['NombreCompletoPaciente']; ?>
-                                    </option> 
+                                    </option>
                                 <?php endforeach; ?>
-                        
+
                             </select>
                         </div>
 
@@ -112,7 +115,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
                         <div class="input-field">
                             <label>Temperatura</label>
-                            <input type="text" name="temperatura" placeholder="Ingrese Los Datos"  value="<?php echo $detalle_receta['Temperatura']; ?>" required>
+                            <input type="text" name="temperatura" placeholder="Ingrese Los Datos" value="<?php echo $detalle_receta['Temperatura']; ?>" required>
                         </div>
 
                         <div class="input-field">
@@ -132,7 +135,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
                         <div class="input-field">
                             <label>Dx</label>
-                            <input type="text" name="diagnostico" placeholder="Ingrese Los Datos"  value="<?php echo $detalle_receta['Dx']; ?>" required>
+                            <input type="text" name="diagnostico" placeholder="Ingrese Los Datos" value="<?php echo $detalle_receta['Dx']; ?>" required>
                         </div>
 
                     </div>
@@ -150,8 +153,8 @@ if (!isset($_SESSION["ID_Usuario"])) {
                 </div>
             </div>
 
-                <button type="submit" class="boton efecto3">Actualizar</button>
-                <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Receta&a=index'">Cancelar</button>
+            <button type="submit" class="boton efecto3">Actualizar</button>
+            <button type="button" class="boton efecto3" onclick="window.location.href='index.php?c=Receta&a=index'">Cancelar</button>
         </form>
     </div>
 
@@ -160,64 +163,62 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function() {
-    // Obtener el ID del paciente preseleccionado al cargar la página
-    var idPaciente = $('#nombrePaciente').val();
+        $(document).ready(function() {
+            // Obtener el ID del paciente preseleccionado al cargar la página
+            var idPaciente = $('#nombrePaciente').val();
 
-    // Llamar a la función para obtener el nombre del paciente al cargar la página
-    obtenerEdadPaciente(idPaciente);
+            // Llamar a la función para obtener el nombre del paciente al cargar la página
+            obtenerEdadPaciente(idPaciente);
 
-    // Función para obtener el nombre del paciente
-    function obtenerEdadPaciente(id) {
-        $.ajax({
-            type: 'GET',
-            url: 'index.php?c=DetallesR&a=obtenerEdadPacientePorId&id=' + id,
-            success: function(edadPaciente) {
-                $('#edadPaciente').val(edadPaciente);
+            // Función para obtener el nombre del paciente
+            function obtenerEdadPaciente(id) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'index.php?c=DetallesR&a=obtenerEdadPacientePorId&id=' + id,
+                    success: function(edadPaciente) {
+                        $('#edadPaciente').val(edadPaciente);
+                    }
+                });
             }
+
+            // Detectar cambios en el campo de selección de pacientes
+            $('#nombrePaciente').change(function() {
+                var idPaciente = $(this).val();
+
+                // Llamar a la función para obtener el nombre del paciente cuando cambia la selección
+                obtenerEdadPaciente(idPaciente);
+            });
         });
-    }
+    </script>
 
-    // Detectar cambios en el campo de selección de pacientes
-    $('#nombrePaciente').change(function() {
-        var idPaciente = $(this).val();
+    <script>
+        $(document).ready(function() {
+            // Obtener el ID del paciente preseleccionado al cargar la página
+            var idMedico = $('#nombreMedico').val();
 
-        // Llamar a la función para obtener el nombre del paciente cuando cambia la selección
-        obtenerEdadPaciente(idPaciente);
-    });
-});
+            // Llamar a la función para obtener el nombre del paciente al cargar la página
+            obtenerCedulaMedico(idMedico);
 
-</script>
-
-<script>
-    $(document).ready(function() {
-    // Obtener el ID del paciente preseleccionado al cargar la página
-    var idMedico = $('#nombreMedico').val();
-
-    // Llamar a la función para obtener el nombre del paciente al cargar la página
-    obtenerCedulaMedico(idMedico);
-
-    // Función para obtener el nombre del paciente
-    function obtenerCedulaMedico(id) {
-        $.ajax({
-            type: 'GET',
-            url: 'index.php?c=DetallesR&a=obtenerCedulaDoctorPorId&id=' + id,
-            success: function(cedulaMedico) {
-                $('#cedulaProfesional').val(cedulaMedico);
+            // Función para obtener el nombre del paciente
+            function obtenerCedulaMedico(id) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'index.php?c=DetallesR&a=obtenerCedulaDoctorPorId&id=' + id,
+                    success: function(cedulaMedico) {
+                        $('#cedulaProfesional').val(cedulaMedico);
+                    }
+                });
             }
+
+            // Detectar cambios en el campo de selección de pacientes
+            $('#nombreMedico').change(function() {
+                var idMedico = $(this).val();
+
+                // Llamar a la función para obtener el nombre del paciente cuando cambia la selección
+                obtenerCedulaMedico(idMedico);
+            });
         });
-    }
-
-    // Detectar cambios en el campo de selección de pacientes
-    $('#nombreMedico').change(function() {
-        var idMedico = $(this).val();
-
-        // Llamar a la función para obtener el nombre del paciente cuando cambia la selección
-        obtenerCedulaMedico(idMedico);
-    });
-});
-
-</script>
+    </script>
     <footer class="footer">
         <img src="/img/logoblanco.png" alt="" class="logof">
         <div class="social-icons-container">
@@ -235,4 +236,5 @@ if (!isset($_SESSION["ID_Usuario"])) {
         <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
     </footer>
 </body>
+
 </html>

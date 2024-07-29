@@ -15,6 +15,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,11 +24,13 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <style>
         .eliminar-container {
             display: inline-block;
-            margin-left: 10px; /* Ajusta este valor según sea necesario */
+            margin-left: 10px;
+            /* Ajusta este valor según sea necesario */
         }
     </style>
     <title>Citas</title>
 </head>
+
 <body>
     <div class="head">
         <div class="Logo">
@@ -38,6 +41,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="index.php?c=Receta&a=index">Recetas</a>
+            <a href="index.php?c=Chatbot&a=index">ChatBot</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -69,7 +73,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             </thead>
             <!-- Cuerpo de la tabla -->
             <tbody id="tbody-pacientes">
-            <?php
+                <?php
                 foreach ($citas['citas'] as $cita) {
                     echo "<tr>";
                     echo "<td>" . $cita['ID_Cita'] . "</td>";
@@ -98,30 +102,30 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <script>
         const searchInput = document.getElementById('search-input');
         const tbodyPacientes = document.getElementById('tbody-pacientes');
-                    
+
         searchInput.addEventListener('keyup', function() {
-          const searchTerm = this.value.toLowerCase();
-          const rows = tbodyPacientes.getElementsByTagName('tr');
-        
-          for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const cells = row.getElementsByTagName('td');
-        
-            let found = false;
-            for (let j = 0; j < cells.length; j++) { // Check all columns
-              const cellText = cells[j].textContent.toLowerCase();
-              if (cellText.includes(searchTerm)) {
-                found = true;
-                break;
-              }
+            const searchTerm = this.value.toLowerCase();
+            const rows = tbodyPacientes.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const cells = row.getElementsByTagName('td');
+
+                let found = false;
+                for (let j = 0; j < cells.length; j++) { // Check all columns
+                    const cellText = cells[j].textContent.toLowerCase();
+                    if (cellText.includes(searchTerm)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             }
-        
-            if (found) {
-              row.style.display = '';
-            } else {
-              row.style.display = 'none';
-            }
-          }
         });
     </script>
 </body>
@@ -141,4 +145,5 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </ul>
     <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
 </footer>
+
 </html>

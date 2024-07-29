@@ -16,14 +16,16 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/isoazul.png">
     <title>AIVI</title>
-    
+
 </head>
+
 <body>
     <div class="head">
         <div class="Logo">
@@ -34,6 +36,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="index.php?c=Receta&a=index">Recetas</a>
+            <a href="index.php?c=Chatbot&a=index">ChatBot</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -44,17 +47,17 @@ if (!isset($_SESSION["ID_Usuario"])) {
         <a href="index.php?c=Citas&a=index" class="btn">Visualizar Citas</a>
         <div class="custom-scroll-down-arrow"><a href="#"><i class="fas fa-chevron-down" style="color: #192655; font-size: 24px;"></i></a></div>
     </header>
-    
+
     <section class="content sau" id="nos-respaldan">
         <h2 class="title title-bar">Nos Respaldan</h2>
         <p>
             En Aivi, nos enorgullece contar con un sólido respaldo proveniente
-            de diversos ámbitos académicos. Nuestra trayectoria está fundamentada 
-            por una base sólida de estudios universitarios, respaldados por 
-            el rigor académico y la excelencia educativa, ofreciendo el mejor servicio 
+            de diversos ámbitos académicos. Nuestra trayectoria está fundamentada
+            por una base sólida de estudios universitarios, respaldados por
+            el rigor académico y la excelencia educativa, ofreciendo el mejor servicio
             a nuestros clientes
         </p>
-        
+
         <div class="box-container3">
             <div class="box">
                 <img src="img/escudo.png" alt="">
@@ -75,8 +78,8 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <div class="box">
                 <img src="img/centro.jpg" alt="">
                 <h3>Cen. Biomagnetismo</h3>
-                <p>Enfoque medico basado en 
-                   el uso de imanes para equilibrar la energía del cuerpo.
+                <p>Enfoque medico basado en
+                    el uso de imanes para equilibrar la energía del cuerpo.
                 </p>
             </div>
         </div>
@@ -86,9 +89,9 @@ if (!isset($_SESSION["ID_Usuario"])) {
     <section class="content about">
         <h2 class="title title-bar">Nosotros</h2>
         <p>
-            Nuestro equipo está conformado por profesionales altamente capacitados y comprometidos, cuyos conocimientos 
-            están respaldados por la culminación de una licenciatura en Naturopatia. Esta formación académica especializada 
-            nos otorga las herramientas necesarias para ofrecer soluciones efectivas y respuestas confiables a las necesidades 
+            Nuestro equipo está conformado por profesionales altamente capacitados y comprometidos, cuyos conocimientos
+            están respaldados por la culminación de una licenciatura en Naturopatia. Esta formación académica especializada
+            nos otorga las herramientas necesarias para ofrecer soluciones efectivas y respuestas confiables a las necesidades
             de nuestros clientes.
         </p>
         <div class="box-container2">
@@ -142,4 +145,5 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </ul>
     <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
 </footer>
+
 </html>

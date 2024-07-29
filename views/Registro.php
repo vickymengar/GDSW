@@ -1,4 +1,3 @@
-
 <?php
 // Iniciar sesión (si aún no está iniciada)
 session_start();
@@ -16,14 +15,16 @@ if (!isset($_SESSION["ID_Usuario"])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style4.css">
     <link rel="icon" href="img/isoazul.png">
     <title>Registrar Paciente</title>
-    
+
 </head>
+
 <body>
     <div class="head">
         <div class="Logo">
@@ -34,6 +35,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
             <a href="index.php?c=Pacientes&a=index">Pacientes</a>
             <a href="index.php?c=Citas&a=index">Citas</a>
             <a href="index.php?c=Receta&a=index">Recetas</a>
+            <a href="index.php?c=Chatbot&a=index">ChatBot</a>
             <a href="index.php?c=Logout&a=index">Cerrar sesión</a>
         </nav>
     </div>
@@ -71,7 +73,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
                             <label for="Medico">Médico a cargo</label>
                             <select id="Medico" name="Medico" required>
                                 <option value="" disabled selected>Selecciona un médico</option>
-                                <?php foreach ($medicos as $medico): ?>
+                                <?php foreach ($medicos as $medico) : ?>
                                     <option value="<?php echo $medico['ID_Medico']; ?>"><?php echo $medico['NombreCompletoMedico']; ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -84,7 +86,7 @@ if (!isset($_SESSION["ID_Usuario"])) {
                 </div>
             </div>
         </form>
-    </div>                    
+    </div>
     <script src="js/pacientes.js"></script>
 </body>
 <footer class="footer">
@@ -103,4 +105,5 @@ if (!isset($_SESSION["ID_Usuario"])) {
     </ul>
     <span class="copyright">&copy;2024, Uptx, Derechos reservados.</span>
 </footer>
+
 </html>
